@@ -1,4 +1,4 @@
-<button (click)="btnClickHome()" mat-button class="menu-button button-menu btn">
+<button routerLink="/client/home" routerLinkActive="active" mat-button class="menu-button button-menu btn">
     <mat-icon class="material-icons-round icons-menu icon">home</mat-icon>
     <span class="texts-menu">Home</span>
 </button>
@@ -6,7 +6,7 @@
     <mat-icon class="material-icons-round icons-menu icon">settings</mat-icon>
     <span class="texts-menu">Settings</span>
 </button>
-<button (click)="btnClickSignIn()" mat-button class="menu-button button-menu btn">
+<button routerLink="/client/sign-out" routerLinkActive="active" mat-button class="menu-button button-menu btn">
     <mat-icon class="material-icons-round icons-menu icon">exit_to_app</mat-icon>
     <span class="texts-menu">Sign out</span>
 </button>

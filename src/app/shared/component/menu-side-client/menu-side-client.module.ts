@@ -3,10 +3,12 @@ import { CommonModule }   from '@angular/common';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { AngularMaterialModule } from '@app/shared/theme/angular-material.module'
 import { MenuSideclientComponent } from '@app/shared/component/menu-side-client/menu-side-client.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [     
     CommonModule,
+    RouterModule,
     ReactiveFormsModule,
     AngularMaterialModule,
   ], 

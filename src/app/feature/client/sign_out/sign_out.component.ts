@@ -21,6 +21,7 @@ import { TokenEntity } from '@app/shared/entities/token.entity'
 import { Observable } from 'rxjs';
 import { LoadStore } from '@app/shared/stores/customized/load.store'
 import { LocalStorageTokenUtils } from '@app/shared/utils/local-storege-token.utils'
+import { LocalStorageRouteUtils } from '@app/shared/utils/local-storege-route.utils'
 
 @Component({
   selector: 'sign_out',
@@ -48,6 +49,7 @@ export class SignOutComponent implements OnInit {
     this.userStore.clean()
     this.tokenStore.clean()
     new LocalStorageTokenUtils().removeItem()
+    new LocalStorageRouteUtils().removeItem()
 
     this.service.signOut().subscribe(r=>{
       if(r.getStatusCode() == 200){
