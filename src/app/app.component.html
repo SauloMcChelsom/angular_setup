@@ -1,0 +1,46 @@
+<div [class]="'theme-wrapper ' + theme$"  [hidden]="!(load$ | async) == true">
+    <mat-toolbar  *ngFor="let headNav of lastHeadNavs$ | async" color="primary"  class="mat-elevation-z9 head-theme example-header app-toolbar header-flex">
+        <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+            <mat-icon class="icons-menu" *ngIf="!sidenav.opened">
+                menu
+            </mat-icon>
+            <mat-icon class="icons-menu" *ngIf="sidenav.opened">
+                close
+            </mat-icon>
+        </button>
+        <button mat-icon-button *ngIf="sidenav.mode === 'side'" (click)="sidenav.toggle()">
+            <mat-icon class="icons-menu" *ngIf="sidenav.opened">
+                menu
+            </mat-icon>
+            <mat-icon class="icons-menu" *ngIf="!sidenav.opened">
+                menu
+            </mat-icon>
+        </button>
+        <head-nav-user *ngIf="headNav.title === 'head-nav-user'"></head-nav-user>
+        <head-nav-client *ngIf="headNav.title === 'head-nav-client'" style="width: 100%;"></head-nav-client>
+        <head-nav-admin *ngIf="headNav.title === 'head-nav-admin'" style="width: 100%;"></head-nav-admin>
+    </mat-toolbar>
+    <mat-sidenav-container class="example-container content-theme">
+        <!----------------------MENU-------------------------->
+        <mat-sidenav  #sidenav="matSidenav" class="mat-elevation-z1 menu-theme" style="border-right: solid 0px">
+            <div *ngFor="let headNav of lastHeadNavs$ | async" >
+                <!--Usuario-->
+                <menu-side-user (click)="sideNavClose()" *ngIf="headNav.title === 'head-nav-user'"></menu-side-user>
+                <!-- Se for  Cliente e estiver logado -->
+                <menu-side-client (click)="sideNavClose()" *ngIf="headNav.title === 'head-nav-client'"></menu-side-client>
+                <!-- Se for  Admin e estiver logado -->
+                <menu-side-admin (click)="sideNavClose()" *ngIf="headNav.title === 'head-nav-admin'"></menu-side-admin>
+            </div>
+        </mat-sidenav>
+        <!------------------CONTEUDOS------------------------------>
+        <mat-sidenav-content><!------------------ -->
+        <!------><div class="content content-theme">
+        <!----------><router-outlet></router-outlet>
+        <!------></div><!--------------------------------->
+        </mat-sidenav-content><!------------------->
+        <!------------------------------------------------>
+    </mat-sidenav-container>
+</div>
+<div [hidden]="!(load$ | async) == false"class="d-flex justify-content-center align-items-center" style="height: 80vh;">
+    <mat-spinner [diameter]="40"></mat-spinner>
+</div>

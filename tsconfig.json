@@ -1,0 +1,46 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "src",
+    "outDir": "./dist/out-tsc",
+    "forceConsistentCasingInFileNames": true,
+    "strictPropertyInitialization": false,/* Property '...' has no initializer and is not definitely assigned in the constructor*/
+    "noImplicitAny": false,/*Parameter 'user_id' implicitly has an 'any' type.*/
+    "strict": true,
+    "strictNullChecks": false,/*object is possibly 'null'*/
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "allowJs": true,
+    "checkJs": false,
+    "target": "es2020",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "dom"
+    ],
+    "paths": {
+      "@app/*": ["app/*"],
+      "@env*": ["environments/*"],
+      "@shared/*": ["app/shared/*"],
+      "@interfaces/*": ["app/core/interfaces/*"],
+      "@page/*": ["app/page/*"],
+      "@theme/*": ["app/theme/*"],
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true,
+    "strictNullChecks": false,/*object is possibly 'null'*/
+  }
+}
