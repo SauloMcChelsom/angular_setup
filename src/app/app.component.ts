@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ViewChild, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router, RouterEvent } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { HeadNavStoreService } from './shared/stores/customized/head-nav-store.service';
@@ -10,9 +10,9 @@ import { UserStore } from './shared/stores/customized/user-store';
 import { Role } from './shared/entities/user.entity';
 import { HeadNavService } from './shared/service/head_nav/head_nav.service';
 import { LoadStore } from './shared/stores/customized/load.store';
-import { Observable } from 'rxjs'
+import { Observable, Subject } from 'rxjs'
 import { LocalStoregeService } from './shared/service/local_storege/local_storege.service';
-
+import { filter, takeUntil } from 'rxjs/operators';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   selector: 'app-root',
@@ -29,7 +29,7 @@ export class AppComponent  implements OnInit{
   readonly lastHeadNavs$ = this.headNav.lastHeadNavs$
 
   public load$: Observable<boolean> = this.loadStore.load$
-
+private destroyed$ = new Subject();
   constructor( 
     private observer: BreakpointObserver, 
     private ref: ChangeDetectorRef,
@@ -41,9 +41,14 @@ export class AppComponent  implements OnInit{
     private headNavService:HeadNavService,
     private loadStore:LoadStore,
     private localStorege:LocalStoregeService
-  ) {}
+  ) {
+
+      
+  }
 
   ngOnInit() {  
+
+    this.appService.saveCurrentRoute()
 
     this.localStorege.token()
 
@@ -53,9 +58,9 @@ export class AppComponent  implements OnInit{
     this.headNavService.setNav()
 
     /**
-     * alternaça do PAGE de acordo com o usuario
+     * rotas config basic
      */
-    this.appService.isUserLoggedIn()
+    this.appService.ConfigRouter()
 
     this.appService.isTokenValid()
   

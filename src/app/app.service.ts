@@ -12,7 +12,10 @@ import { environment as API } from '@env/environment';
 import { HttpErrorResponseService } from './shared/service/http_error/http_error_response.service';
 import { OpenSnackBarService } from './shared/service/open_snack_bar/open_snack_bar.service';
 import { TokenEntity } from './shared/entities/token.entity';
-
+import { NavigationStart, RouterEvent } from '@angular/router';
+import { filter, takeUntil } from 'rxjs/operators';
+import { LocalStorageRouteUtils } from './shared/utils/local-storege-route.utils';
+import { RouteEntity } from './shared/entities/route.entity';
 
 const AUTH =  API.api_fake_get
 const GET_TOKEN =  API.api_fake_post
@@ -29,7 +32,7 @@ export class AppService {
         private open:OpenSnackBarService,
 	) {}
 
-	public isUserLoggedIn(){
+	public ConfigRouter(){
 		/**
 		 * Se houver token, Faz uma requisição para validar token
 		 */
@@ -39,16 +42,35 @@ export class AppService {
 			 * Para identificar se o usuario e Admin ou clinte, ultilize a flag "is_superuser"
 			 */
 			if(res.length >= 1){
-				if(res[0].getRole() == Role.ADMIN){
-					this.router.navigate(['/admin/home']);
-				}else{
-					this.router.navigate(['/client/home']);
+				if(res[0].getRole() == 'user'){
+					if(new LocalStorageRouteUtils().getItem().route.includes("/client/") == false){
+						this.router.navigate(['/client/home']);
+						return
+					}
+					if(new LocalStorageRouteUtils().getItem().route.includes("/client/")){
+						this.router.navigate([new LocalStorageRouteUtils().getItem().route]);
+						return
+					}
 				}
-			}else{
+
+				if(res[0].getRole() == 'admin'){}
 				
 			}
 		})
 	}
+
+
+	/**
+	 * 				if(new LocalStorageRouteUtils().getItem().route.includes("/client/")){
+						this.router.navigate([new LocalStorageRouteUtils().getItem().route]);
+						return
+					}
+					if(new LocalStorageRouteUtils().getItem().route == '/client/home'){
+						this.router.navigate(['/client/home']);
+						return
+					}
+	 */
+
 
 	public isTokenValid(){
 		this.tokenStore.token$.subscribe((res)=>{
@@ -66,9 +88,21 @@ export class AppService {
 					})
 				}else{
 					//obter novo token
+					this.getAccessToken(res[0].refresh_token.token).subscribe((r)=>{
+						if(r.getStatusCode() == 200){
+						this.loadStore.load = true
+						this.tokenStore.clean()
+						this.tokenStore.add(<TokenEntity>r.getResults()[0])
+						return true
+						}else{
+						this.loadStore.load = true
+						this.router.navigate(['/not-authorized']); 
+						return false
+						}
+					})
 				}
 			}else{
-				
+
 			}
 		})
 	}
@@ -130,4 +164,22 @@ export class AppService {
 			]
 		})))
     }
+
+
+	public saveCurrentRoute(){
+		this.router.events.pipe(
+			filter((event: any) => event instanceof NavigationStart),
+		).subscribe((event: NavigationStart) => {
+			let router_entity:RouteEntity = new RouteEntity()
+			    router_entity.route = event.url
+			
+			  let route:RouteEntity[] = [router_entity].map((item:RouteEntity) => {
+				return <RouteEntity>{
+					route: item.route
+				};			
+			});
+				
+			new LocalStorageRouteUtils().setItem(route[0])
+		});
+	}
 } 

@@ -11,7 +11,7 @@ export class MenuSideclientComponent {
   constructor(private router:Router){}
   
   public btnClickSignIn():void {
-    this.router.navigateByUrl('/sign-out');
+    this.router.navigateByUrl('/client/sign-out');
   }
 
   public btnClickHome():void {

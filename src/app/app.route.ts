@@ -11,7 +11,7 @@ export const ROUTES: Routes = [
     loadChildren: () => import('./feature/user/login/login.module').then(m => m.LoginModule),
   },
   {
-    path: 'sign-out',
+    path: 'client/sign-out',
     loadChildren: () => import('./feature/client/sign_out/sign_out.module').then(m => m.SignOutModule),
   },
   {
