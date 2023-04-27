@@ -59,19 +59,6 @@ export class AppService {
 		})
 	}
 
-
-	/**
-	 * 				if(new LocalStorageRouteUtils().getItem().route.includes("/client/")){
-						this.router.navigate([new LocalStorageRouteUtils().getItem().route]);
-						return
-					}
-					if(new LocalStorageRouteUtils().getItem().route == '/client/home'){
-						this.router.navigate(['/client/home']);
-						return
-					}
-	 */
-
-
 	public isTokenValid(){
 		this.tokenStore.token$.subscribe((res)=>{
 			if(res.length >= 1){

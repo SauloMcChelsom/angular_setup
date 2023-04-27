@@ -14,7 +14,8 @@ import { MenuSideclientModule } from './shared/component/menu-side-client/menu-s
 import { MenuSideUserModule } from './shared/component/menu-side-user/menu-side-user.module';
 import { MenuSideAdminModule } from './shared/component/menu-side-admin/menu-side-admin.module';
 import { AuthGuard } from '@app/shared/guards/auth.guard'
-import { AdminGuard } from '@app/shared/guards/admin.guard'
+import { IsAdminGuard } from '@app/shared/guards/is_admin.guard'
+import { IsUserGuard } from './shared/guards/is_user.guard';
 import { AuthInterceptorService } from '@app/shared/interceptor/auth.interceptor'
 import { LocalStorageTokenUtils } from '@app/shared/utils/local-storege-token.utils'
 import { environment } from '../environments/environment'
@@ -24,6 +25,7 @@ import { HttpErrorResponseModule } from './shared/service/http_error/http_error_
 import { OpenSnackBarModule } from './shared/service/open_snack_bar/open_snack_bar.module';
 import { HeadNavModule } from './shared/service/head_nav/head_nav.module';
 import { LocalStoregeModule } from './shared/service/local_storege/local_storege.module';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +58,8 @@ import { LocalStoregeModule } from './shared/service/local_storege/local_storege
   ],
   providers: [
     AuthGuard,
-    AdminGuard,
+    IsAdminGuard,
+    IsUserGuard,
     LocalStorageTokenUtils,
     {
       provide: HTTP_INTERCEPTORS,
