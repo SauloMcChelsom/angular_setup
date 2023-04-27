@@ -22,7 +22,6 @@ export class IsUserGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>  {
     return this.userStore.user$.pipe(
       map(e => {
-        console.log(e)
         if (e.length >= 1) {
             if(e[0].getRole() == Role.USER){
               return true
