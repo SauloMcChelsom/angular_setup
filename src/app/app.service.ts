@@ -32,6 +32,9 @@ export class AppService {
         private open:OpenSnackBarService,
 	) {}
 
+	/**
+     * rotas config basic
+     */
 	public ConfigRouter(){
 		/**
 		 * Se houver token, Faz uma requisição para validar token
@@ -59,9 +62,14 @@ export class AppService {
 		})
 	}
 
+	/**
+	 * verificar se o token atual e valido, se não obter um novo token
+	 */
 	public isTokenValid(){
 		this.tokenStore.token$.subscribe((res)=>{
+			//token existe
 			if(res.length >= 1){
+				//toke é valido
 				if(new Date(<string>res[0].refresh_token.expires_in) > new Date() ){
 					this.getUser().subscribe((res: IHttpResponse) => {
 						if(res.getStatusCode() == 200){
@@ -77,19 +85,17 @@ export class AppService {
 					//obter novo token
 					this.getAccessToken(res[0].refresh_token.token).subscribe((r)=>{
 						if(r.getStatusCode() == 200){
-						this.loadStore.load = true
-						this.tokenStore.clean()
-						this.tokenStore.add(<TokenEntity>r.getResults()[0])
-						return true
+							this.loadStore.load = true
+							this.tokenStore.clean()
+							this.tokenStore.add(<TokenEntity>r.getResults()[0])
+							return true
 						}else{
-						this.loadStore.load = true
-						this.router.navigate(['/not-authorized']); 
-						return false
+							this.loadStore.load = true
+							this.router.navigate(['/not-authorized']); 
+							return false
 						}
 					})
 				}
-			}else{
-
 			}
 		})
 	}
@@ -153,6 +159,10 @@ export class AppService {
     }
 
 
+	
+    /**
+     * salvar a rota atual localmente
+     */
 	public saveCurrentRoute(){
 		this.router.events.pipe(
 			filter((event: any) => event instanceof NavigationStart),

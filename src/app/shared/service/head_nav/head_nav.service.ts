@@ -11,22 +11,26 @@ export class HeadNavService {
 		private userStore: UserStore
 	) {}
 
+	
+    /**
+     * alternaça do HEADER de acordo com o usuario
+     */
 	public setNav(){
 		this.userStore.user$.subscribe((user)=>{
-		if(user[0] == undefined){  
-			this.setNavUser()
-			return
-		}
+			if(user[0] == undefined){  
+				this.setNavUser()
+				return
+			}
 
-		if(user[0].getRole() == Role.USER){
-			this.cleanNav()
-			this.setNavClient()
-		} 
+			if(user[0].getRole() == Role.USER){
+				this.cleanNav()
+				this.setNavClient()
+			} 
 
-		if(user[0].getRole() == Role.ADMIN){
-			this.cleanNav()
-			this.setNavAdmin()
-		}
+			if(user[0].getRole() == Role.ADMIN){
+				this.cleanNav()
+				this.setNavAdmin()
+			}
 		})
 	}
 

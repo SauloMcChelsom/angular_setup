@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core'
-import { CanLoad, CanActivate } from '@angular/router'
-import { Route, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
-import { HttpClient } from '@angular/common/http';
+import { CanActivate } from '@angular/router'
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import { map, catchError } from 'rxjs/operators'
-import { TokenStore } from '../stores/customized/token.store';
 import { Observable, of } from 'rxjs';
-import { AppService } from '@app/app.service';
-import { TokenEntity } from '../entities/token.entity';
-import { LoadStore } from '../stores/customized/load.store';
 import { UserStore } from '../stores/customized/user-store';
 import { Role } from '../entities/user.entity';
-
 
 @Injectable()
 export class IsUserGuard implements CanActivate {
   constructor(
     private router: Router,
-    private userStore:UserStore
+    private userStore:UserStore,
   ) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean>  {
