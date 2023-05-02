@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core'
-import { CanLoad, CanActivate } from '@angular/router'
-import { Route, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
-import { HttpClient } from '@angular/common/http';
+import { CanActivate } from '@angular/router'
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import { map, catchError } from 'rxjs/operators'
 import { TokenStore } from '../stores/customized/token.store';
 import { Observable, of } from 'rxjs';
@@ -14,7 +13,6 @@ import { LoadStore } from '../stores/customized/load.store';
 export class AuthGuard implements CanActivate {
   constructor(
     private router: Router, 
-    private http: HttpClient, 
     private tokenStore:TokenStore,
     private appService:AppService,
     private loadStore:LoadStore,

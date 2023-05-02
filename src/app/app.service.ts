@@ -12,10 +12,11 @@ import { environment as API } from '@env/environment';
 import { HttpErrorResponseService } from './shared/service/http_error/http_error_response.service';
 import { OpenSnackBarService } from './shared/service/open_snack_bar/open_snack_bar.service';
 import { TokenEntity } from './shared/entities/token.entity';
-import { NavigationStart, RouterEvent } from '@angular/router';
-import { filter, takeUntil } from 'rxjs/operators';
+import { NavigationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { LocalStorageRouteUtils } from './shared/utils/local-storege-route.utils';
 import { RouteEntity } from './shared/entities/route.entity';
+import { LocalStorageTokenUtils } from './shared/utils/local-storege-token.utils';
 
 const AUTH =  API.api_fake_get
 const GET_TOKEN =  API.api_fake_post
@@ -86,12 +87,13 @@ export class AppService {
 					this.getAccessToken(res[0].refresh_token.token).subscribe((r)=>{
 						if(r.getStatusCode() == 200){
 							this.loadStore.load = true
-							this.tokenStore.clean()
 							this.tokenStore.add(<TokenEntity>r.getResults()[0])
 							return true
 						}else{
 							this.loadStore.load = true
 							this.router.navigate(['/not-authorized']); 
+							this.tokenStore.clean()
+							new LocalStorageTokenUtils().removeItem()
 							return false
 						}
 					})
