@@ -156,12 +156,19 @@ export class LoginComponent implements OnInit {
     }
 		this.service.signInWithUserAndPassword({user:this.user?.value, password: this.password?.value}).subscribe((res: IHttpResponse) => {
       if(res.getStatusCode() == 200){
+        
         this.tokenStore.add(<TokenEntity>res.getResults()[0])
-        if(res[0].getRole() == Role.ADMIN){
-					this.router.navigate(['/admin/home']);
-				}else{
-					this.router.navigate(['/client/home']);
-				}
+
+        this.userStore.user$.subscribe((user)=>{
+          console.log(user)
+          if(user.length >= 1){
+            if(user[0].getRole() == Role.ADMIN){
+              this.router.navigate(['/admin/home']);
+            }else{
+              this.router.navigate(['/client/home']);
+            }
+          }
+        })
       }else{
         this.open.error("Error")
       }

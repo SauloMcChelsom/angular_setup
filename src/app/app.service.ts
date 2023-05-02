@@ -87,13 +87,12 @@ export class AppService {
 					this.getAccessToken(res[0].refresh_token.token).subscribe((r)=>{
 						if(r.getStatusCode() == 200){
 							this.loadStore.load = true
+							this.tokenStore.clean()
 							this.tokenStore.add(<TokenEntity>r.getResults()[0])
 							return true
 						}else{
 							this.loadStore.load = true
 							this.router.navigate(['/not-authorized']); 
-							this.tokenStore.clean()
-							new LocalStorageTokenUtils().removeItem()
 							return false
 						}
 					})
@@ -160,8 +159,6 @@ export class AppService {
 		})))
     }
 
-
-	
     /**
      * salvar a rota atual localmente
      */
