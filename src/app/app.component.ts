@@ -7,6 +7,8 @@ import { HeadNavService } from './shared/service/head_nav/head_nav.service';
 import { LoadStore } from './shared/stores/customized/load.store';
 import { Observable } from 'rxjs'
 import { LocalStoregeService } from './shared/service/local_storege/local_storege.service';
+import { ConfigRouterBasic } from './services/config-router-basic.service';
+import { isTokenValid } from './services/is-token-valid.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,20 +33,22 @@ export class AppComponent  implements OnInit{
     private appService:AppService,
     private headNavService:HeadNavService,
     private loadStore:LoadStore,
-    private localStorege:LocalStoregeService
+    private localStorege:LocalStoregeService,
+    private serviceConfigRouterBasic:ConfigRouterBasic,
+    private serviceIsTokenValid:isTokenValid
   ) {}
 
-  public ngOnInit() {  
+  public ngOnInit() {
 
     this.appService.saveCurrentRoute()
 
     this.localStorege.saveTokenLocal()
 
     this.headNavService.setNav()
+    
+    this.serviceConfigRouterBasic.start()
 
-    this.appService.ConfigRouterBasic()
-
-    this.appService.isTokenValid()
+    this.serviceIsTokenValid.start()
   
     /**
      * Se a aba do navegador for arrastada para tamnho que
