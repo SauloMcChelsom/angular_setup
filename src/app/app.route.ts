@@ -19,6 +19,10 @@ export const ROUTES: Routes = [
     loadChildren: () => import('./feature/client/home/home.module').then(m => m.HomeModule),
   },
   {
+    path: 'client/settings',
+    loadChildren: () => import('./feature/client/settings/settings.module').then(m => m.SettingsModule),
+  },
+  {
     path: 'help',
     loadChildren: () => import('./feature/core/help/help.module').then(m => m.HelpModule),
   },

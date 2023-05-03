@@ -42,7 +42,7 @@ export class AppComponent  implements OnInit{
 
     this.headNavService.setNav()
 
-    this.appService.ConfigRouter()
+    this.appService.ConfigRouterBasic()
 
     this.appService.isTokenValid()
   

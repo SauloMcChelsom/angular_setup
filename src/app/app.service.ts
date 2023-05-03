@@ -36,7 +36,7 @@ export class AppService {
 	/**
      * rotas config basic
      */
-	public ConfigRouter(){
+	public ConfigRouterBasic(){
 		/**
 		 * Se houver token, Faz uma requisição para validar token
 		 */
