@@ -8,15 +8,5 @@ import { Router } from '@angular/router';
 })
 export class MenuSideAdminComponent {
 
-  constructor(private router:Router){
-
-  }
-  
-  public btnClickSignIn():void {
-    this.router.navigateByUrl('/sign-out');
-  }
-
-  public btnClickHome():void {
-    this.router.navigateByUrl('/admin/home');
-  }
+  constructor(private router:Router){}
 }

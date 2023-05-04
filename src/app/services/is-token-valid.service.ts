@@ -92,7 +92,7 @@ export class IsTokenValid {
 					timestamp: new Date().toString(),
 					updated_at: new Date().toString(),
 					uid: 'sf56fd5-fd6f56df5fDFD5d65-dfdf8d5ddf56d',
-					role: Role.USER
+					role: Role.ADMIN
 				})
 			]
 		}),(e:any)=>{console.log(e)}))

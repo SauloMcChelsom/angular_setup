@@ -2,22 +2,20 @@ import { NgModule }   from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { AngularMaterialModule } from '@app/shared/theme/angular-material.module'
-import { MenuSideAdminComponent } from '@app/shared/component/menu-side-admin/menu-side-admin.component';
-import { RouterModule } from '@angular/router';
+import { SignOutComponent }  from './sign_out.component';
+import { SignOutRoute }  from './sign_out.route';
+import { SignOutService }  from './sign_out.service'
 
 @NgModule({
   imports: [     
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    RouterModule
+    SignOutRoute
   ], 
   declarations: [
-    MenuSideAdminComponent
+    SignOutComponent
   ],
-  exports: [
-    MenuSideAdminComponent
-  ],
-  providers: [ ]
+  providers: [ SignOutService ]
 })
-export class MenuSideAdminModule { }
+export class SignOutModule { }

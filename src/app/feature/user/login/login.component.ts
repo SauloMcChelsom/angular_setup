@@ -153,7 +153,6 @@ export class LoginComponent implements OnInit {
         this.tokenStore.add(<TokenEntity>res.getResults()[0])
 
         this.userStore.user$.subscribe((user)=>{
-          console.log(user)
           if(user.length >= 1){
             if(user[0].getRole() == Role.ADMIN){
               this.router.navigate(['/admin/home']);

@@ -22,6 +22,20 @@ export const ROUTES: Routes = [
     path: 'client/settings',
     loadChildren: () => import('./feature/client/settings/settings.module').then(m => m.SettingsModule),
   },
+
+  {
+    path: 'admin/sign-out',
+    loadChildren: () => import('./feature/admin/sign_out/sign_out.module').then(m => m.SignOutModule),
+  },
+  {
+    path: 'admin/home',
+    loadChildren: () => import('./feature/admin/home/home.module').then(m => m.HomeModule),
+  },
+  {
+    path: 'admin/settings',
+    loadChildren: () => import('./feature/admin/settings/settings.module').then(m => m.SettingsModule),
+  },
+
   {
     path: 'help',
     loadChildren: () => import('./feature/core/help/help.module').then(m => m.HelpModule),

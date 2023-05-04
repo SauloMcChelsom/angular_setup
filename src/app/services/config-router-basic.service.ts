@@ -34,7 +34,16 @@ export class ConfigRouterBasic {
 					}
 				}
 
-				if(res[0].getRole() == 'admin'){}
+				if(res[0].getRole() == 'admin'){
+					if(new LocalStorageRouteUtils().getItem().route.includes("/admin/") == false){
+						this.router.navigate(['/admin/home']);
+						return
+					}
+					if(new LocalStorageRouteUtils().getItem().route.includes("/admin/")){
+						this.router.navigate([new LocalStorageRouteUtils().getItem().route]);
+						return
+					}
+				}
 			}
 		})
 	}
