@@ -4,9 +4,9 @@ import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/ro
 import { map, catchError } from 'rxjs/operators'
 import { TokenStore } from '../stores/customized/token.store';
 import { Observable, of } from 'rxjs';
-import { AppService } from '@app/app.service';
 import { TokenEntity } from '../entities/token.entity';
 import { LoadStore } from '../stores/customized/load.store';
+import { GetAccessToken } from '@app/services/get-access-token.service';
 
 
 @Injectable()
@@ -14,7 +14,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private router: Router, 
     private tokenStore:TokenStore,
-    private appService:AppService,
+    private serviceGetAccessToken:GetAccessToken,
     private loadStore:LoadStore,
   ) {}
 
@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
             }else{
               //obter novo token
               this.loadStore.load = false
-              this.appService.getAccessToken(e[0].refresh_token.token).subscribe((r)=>{
+              this.serviceGetAccessToken.start$(e[0].refresh_token.token).subscribe((r)=>{
                 if(r.getStatusCode() == 200){
                   this.loadStore.load = true
                   this.tokenStore.clean()

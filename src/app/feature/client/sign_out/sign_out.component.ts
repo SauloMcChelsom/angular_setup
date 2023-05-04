@@ -1,24 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http'
-import { ChangeDetectionStrategy, Component, ChangeDetectorRef, OnInit } from '@angular/core'
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar'
-import { SignOutService } from './sign_out.service'
-import { AppService } from '@app/app.service'
-import { Forms, ISignIn } from './sign_out.interface'
-import { IHttpResponse } from '@app/shared/entities/http_response.entity'
-import { LocalStorageUserUtils } from '@app/shared/utils/local-storege-user.utils'
-import { Role, UserEntity } from '@app/shared/entities/user.entity'
-import { OpenSnackBarService } from '@app/shared/service/open_snack_bar/open_snack_bar.service'
-import { HttpErrorResponseService } from '@app/shared/service/http_error/http_error_response.service'
+import { Observable } from 'rxjs';
+import { SignOutService } from '@app/feature/client/sign_out/sign_out.service'
 import { UserStore } from '@app/shared/stores/customized/user-store'
 import { TokenStore } from '@app/shared/stores/customized/token.store'
-import { TokenEntity } from '@app/shared/entities/token.entity'
-import { Observable } from 'rxjs';
 import { LoadStore } from '@app/shared/stores/customized/load.store'
 import { LocalStorageTokenUtils } from '@app/shared/utils/local-storege-token.utils'
 import { LocalStorageRouteUtils } from '@app/shared/utils/local-storege-route.utils'

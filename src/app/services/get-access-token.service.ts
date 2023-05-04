@@ -1,31 +1,39 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
+
 import { Observable } from 'rxjs';
-import { IHttpResponse } from '@app/shared/entities/http_response.entity';
-import { TokenEntity } from '@app/shared/entities/token.entity';
-import { ISignIn } from '@app/feature/client/sign_out/sign_out.interface';
+import { map } from 'rxjs/operators';
+
+import { UserStore } from '@shared/stores/customized/user-store';
+import { Role, UserEntity } from '@shared/entities/user.entity';
+import { LoadStore } from '@shared/stores/customized/load.store';
+import { TokenStore } from '@shared/stores/customized/token.store';
+import { IHttpResponse } from '@shared/entities/http_response.entity';
+import { HttpErrorResponseService } from '@shared/service/http_error/http_error_response.service';
+import { OpenSnackBarService } from '@shared/service/open_snack_bar/open_snack_bar.service';
+import { TokenEntity } from '@shared/entities/token.entity';
 
 import { environment as API } from '@env/environment';
-const AUTH =  API.api_fake_post
+const AUTH =  API.api_fake_get
+const GET_TOKEN =  API.api_fake_post
 
-@Injectable()
-export class LoginService {
+@Injectable({ providedIn: 'root'})
+export class GetAccessToken {
 	constructor(private http: HttpClient) {}
 
-	public signInWithUserAndPassword(user: ISignIn): Observable<IHttpResponse>{
+	public start$(token: String): Observable<IHttpResponse>{
 		const headers = new HttpHeaders({
 			'Accept': 'application/json',
 			'Content-Type': 'application/json'
 		});
 		const body = {
-			username:user.user,
-			password:user.password
+			refresh_token:token
 		}
 		var set_expires_in = new Date()
 		set_expires_in.setMinutes(set_expires_in.getMinutes() + 1)
         //return this.http.post(AUTH, body, {headers: headers}).pipe(map(result=>new IHttpResponse(result)))
-		return this.http.post(AUTH, body, {headers: headers}).pipe(map(result=>new IHttpResponse({
+		return this.http.post(GET_TOKEN, body, {headers: headers}).pipe(map(result=>new IHttpResponse({
 			code:'USER_AUTH_SUCCESS',
 			statusCode:200,
 			description:'',

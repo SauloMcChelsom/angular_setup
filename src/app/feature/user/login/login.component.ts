@@ -1,23 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http'
-import { Component, ChangeDetectorRef, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import {
-  MatSnackBar,
-  MatSnackBarHorizontalPosition,
-  MatSnackBarVerticalPosition,
-} from '@angular/material/snack-bar'
 import { LoginService } from './login.service'
-import { AppService } from '@app/app.service'
-import { Forms, ISignIn } from './login.interface'
+import { Forms } from './login.interface'
 import { IHttpResponse } from '@app/shared/entities/http_response.entity'
-import { LocalStorageUserUtils } from '@app/shared/utils/local-storege-user.utils'
-import { Role, UserEntity } from '@app/shared/entities/user.entity'
+import { Role } from '@app/shared/entities/user.entity'
 import { OpenSnackBarService } from '@app/shared/service/open_snack_bar/open_snack_bar.service'
 import { HttpErrorResponseService } from '@app/shared/service/http_error/http_error_response.service'
 import { UserStore } from '@app/shared/stores/customized/user-store'
 import { TokenStore } from '@app/shared/stores/customized/token.store'
 import { TokenEntity } from '@app/shared/entities/token.entity'
+
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -52,7 +46,6 @@ export class LoginComponent implements OnInit {
 	constructor(
     private service: LoginService, 
     private router: Router, 
-    private appService:AppService,
     private errorHttpUtil:HttpErrorResponseService,
     private open:OpenSnackBarService,
     private userStore:UserStore,

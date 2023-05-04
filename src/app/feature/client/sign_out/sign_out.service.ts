@@ -1,14 +1,10 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { environment as API } from '@env/environment';
+import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';
-import { ISignIn } from './sign_out.interface';
 import { Observable } from 'rxjs';
 import { IHttpResponse } from '@app/shared/entities/http_response.entity';
-import { Role, UserEntity } from '@app/shared/entities/user.entity';
-import { IUser } from '@app/shared/entities/user.entity';
-import { TokenEntity } from '@app/shared/entities/token.entity';
-//const AUTH = API.api_fake_post+`/api-token-auth/` 
+
+import { environment as API } from '@env/environment';
 const AUTH =  API.api_fake_get
 
 @Injectable()

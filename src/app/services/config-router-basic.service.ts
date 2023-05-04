@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { UserStore } from '@shared/stores/customized/user-store';
 import { LocalStorageRouteUtils } from '@shared/utils/local-storege-route.utils';
 
-@Injectable()
+@Injectable({ providedIn: 'root'})
 export class ConfigRouterBasic {
 	constructor(
 		private router: Router,   
@@ -13,7 +13,7 @@ export class ConfigRouterBasic {
 	/**
 	 * ConfigRouterBasic
 	 */
-	public start(){
+	public start$(){
 		/**
 		 * Se houver token, Faz uma requisição para validar token
 		 */
