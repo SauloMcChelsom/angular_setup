@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core'
-import { Routes, RouterModule, PreloadAllModules, NoPreloading  } from '@angular/router'
+import { Routes, RouterModule, NoPreloading  } from '@angular/router'
 
 export const ROUTES: Routes = [
   {
@@ -10,32 +10,6 @@ export const ROUTES: Routes = [
     path: 'login',
     loadChildren: () => import('./feature/user/login/login.module').then(m => m.LoginModule),
   },
-  {
-    path: 'client/sign-out',
-    loadChildren: () => import('./feature/client/sign_out/sign_out.module').then(m => m.SignOutModule),
-  },
-  {
-    path: 'client/home',
-    loadChildren: () => import('./feature/client/home/home.module').then(m => m.HomeModule),
-  },
-  {
-    path: 'client/settings',
-    loadChildren: () => import('./feature/client/settings/settings.module').then(m => m.SettingsModule),
-  },
-
-  {
-    path: 'admin/sign-out',
-    loadChildren: () => import('./feature/admin/sign_out/sign_out.module').then(m => m.SignOutModule),
-  },
-  {
-    path: 'admin/home',
-    loadChildren: () => import('./feature/admin/home/home.module').then(m => m.HomeModule),
-  },
-  {
-    path: 'admin/settings',
-    loadChildren: () => import('./feature/admin/settings/settings.module').then(m => m.SettingsModule),
-  },
-
   {
     path: 'help',
     loadChildren: () => import('./feature/core/help/help.module').then(m => m.HelpModule),
@@ -51,6 +25,14 @@ export const ROUTES: Routes = [
   {
     path: 'page-not-found',
     loadChildren: () => import('./feature/core/not-found/notfound.module').then(m => m.PageNotFoundModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () => import('./feature/admin/admin.module').then(m => m.AdminModule),
+  },
+  {
+    path: 'client',
+    loadChildren: () => import('./feature/client/client.module').then(m => m.ClientModule),
   },
   {
     path: '**',

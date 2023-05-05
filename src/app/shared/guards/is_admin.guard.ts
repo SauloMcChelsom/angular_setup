@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { CanActivate } from '@angular/router'
+import { CanActivate, Route } from '@angular/router'
 import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router'
 import { map, catchError } from 'rxjs/operators'
 import { Observable, of } from 'rxjs';
@@ -18,7 +18,7 @@ export class IsAdminGuard implements CanActivate {
     return this.userStore.user$.pipe(
       map(e => {
         if (e.length >= 1) {
-            if(e[0].getRole() == Role.ADMIN){
+          if (e[0].getRole() == Role.ADMIN) {
               return true
             }else{
               this.router.navigate(['/forbidden']); 
