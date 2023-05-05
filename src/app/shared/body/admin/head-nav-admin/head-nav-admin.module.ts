@@ -2,7 +2,7 @@ import { NgModule }   from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { AngularMaterialModule } from '@app/shared/theme/angular-material.module'
-import { HeadNavUserComponent } from '@app/shared/component/head-nav-user/head-nav-user.component';
+import { HeadNavAdminComponent } from '@app/shared/body/admin/head-nav-admin/head-nav-admin.component';
 
 @NgModule({
   imports: [     
@@ -11,11 +11,11 @@ import { HeadNavUserComponent } from '@app/shared/component/head-nav-user/head-n
     AngularMaterialModule,
   ], 
   declarations: [
-    HeadNavUserComponent
+    HeadNavAdminComponent
   ],
   exports: [
-    HeadNavUserComponent
+    HeadNavAdminComponent
   ],
   providers: [ ]
 })
-export class HeadNavUserModule { }
+export class HeadNavAdminModule { }

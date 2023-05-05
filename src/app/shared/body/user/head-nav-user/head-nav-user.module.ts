@@ -2,22 +2,20 @@ import { NgModule }   from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { AngularMaterialModule } from '@app/shared/theme/angular-material.module'
-import { MenuSideclientComponent } from '@app/shared/component/menu-side-client/menu-side-client.component';
-import { RouterModule } from '@angular/router';
+import { HeadNavUserComponent } from '@app/shared/body/user/head-nav-user/head-nav-user.component';
 
 @NgModule({
   imports: [     
     CommonModule,
-    RouterModule,
     ReactiveFormsModule,
     AngularMaterialModule,
   ], 
   declarations: [
-    MenuSideclientComponent
+    HeadNavUserComponent
   ],
   exports: [
-    MenuSideclientComponent
+    HeadNavUserComponent
   ],
   providers: [ ]
 })
-export class MenuSideclientModule { }
+export class HeadNavUserModule { }
