@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
 import { Observable } from 'rxjs';
-import { SignOutService } from '@app/feature/client/sign_out/sign_out.service'
+import { SignOutService } from '@app/pages/admin/sign_out/sign_out.service'
 import { UserStore } from '@app/shared/stores/customized/user-store'
 import { TokenStore } from '@app/shared/stores/customized/token.store'
 import { LoadStore } from '@app/shared/stores/customized/load.store'

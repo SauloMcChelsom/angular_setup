@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IHttpResponse } from '@app/shared/entities/http_response.entity';
 import { TokenEntity } from '@app/shared/entities/token.entity';
-import { ISignIn } from '@app/feature/client/sign_out/sign_out.interface';
+import { ISignIn } from '@app/pages/client/sign_out/sign_out.interface';
 
 import { environment as API } from '@env/environment';
 const AUTH =  API.api_fake_post
