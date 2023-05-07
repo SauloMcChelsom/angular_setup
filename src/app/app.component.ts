@@ -2,10 +2,10 @@ import { Component, ChangeDetectionStrategy, ViewChild, OnInit} from '@angular/c
 import { HeadNavStoreService } from './shared/stores/customized/head-nav-store.service';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatSidenav } from '@angular/material/sidenav';
-import { HeadNavService } from './shared/service/head_nav/head_nav.service';
+import { HeadNavService } from './shared/services/head_nav/head_nav.service';
 import { LoadStore } from './shared/stores/customized/load.store';
 import { Observable } from 'rxjs'
-import { LocalStoregeService } from './shared/service/local_storege/local_storege.service';
+import { LocalStoregeService } from './shared/services/local_storege/local_storege.service';
 import { ConfigRouterBasic } from './services/config-router-basic.service';
 import { IsTokenValid } from './services/is-token-valid.service';
 import { SaveCurrentRoute } from './services/save-current-route.service';

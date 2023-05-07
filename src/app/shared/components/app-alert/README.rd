@@ -5,7 +5,7 @@ https://angular-training-guide.rangle.io/advanced-components/access_child_compon
 
 <app-alert></app-alert>
 ----------------module------------------------
-import { AlertComponent } from '@app/component/app-alert/app-alert';
+import { AlertComponent } from '@app/components/app-alert/app-alert';
 
 @NgModule({
   imports: [.... ], 
@@ -14,7 +14,7 @@ import { AlertComponent } from '@app/component/app-alert/app-alert';
   ],
 ---------------component-------------------------
 
-import { AlertComponent } from '@app/component/app-alert/app-alert';
+import { AlertComponent } from '@app/components/app-alert/app-alert';
   @ViewChild(AlertComponent) alert: AlertComponent;
 
   ngInit(){

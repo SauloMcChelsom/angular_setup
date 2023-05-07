@@ -20,10 +20,10 @@ import { AuthInterceptorService } from '@app/shared/interceptor/auth.interceptor
 import { LocalStorageTokenUtils } from '@app/shared/utils/local-storege-token.utils'
 import { environment } from '../environments/environment'
 import { AppRoute } from '@app/app-routing.module'
-import { HttpErrorResponseModule } from './shared/service/http_error/http_error_response.module';
-import { OpenSnackBarModule } from './shared/service/open_snack_bar/open_snack_bar.module';
-import { HeadNavModule } from './shared/service/head_nav/head_nav.module';
-import { LocalStoregeModule } from './shared/service/local_storege/local_storege.module';
+import { HttpErrorResponseModule } from './shared/services/http_error/http_error_response.module';
+import { OpenSnackBarModule } from './shared/services/open_snack_bar/open_snack_bar.module';
+import { HeadNavModule } from './shared/services/head_nav/head_nav.module';
+import { LocalStoregeModule } from './shared/services/local_storege/local_storege.module';
 
 
 @NgModule({

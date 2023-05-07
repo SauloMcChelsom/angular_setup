@@ -10,8 +10,8 @@ import { Role, UserEntity } from '@shared/entities/user.entity';
 import { LoadStore } from '@shared/stores/customized/load.store';
 import { TokenStore } from '@shared/stores/customized/token.store';
 import { IHttpResponse } from '@shared/entities/http_response.entity';
-import { HttpErrorResponseService } from '@shared/service/http_error/http_error_response.service';
-import { OpenSnackBarService } from '@shared/service/open_snack_bar/open_snack_bar.service';
+import { HttpErrorResponseService } from '@shared/services/http_error/http_error_response.service';
+import { OpenSnackBarService } from '@shared/services/open_snack_bar/open_snack_bar.service';
 import { TokenEntity } from '@shared/entities/token.entity';
 
 import { environment as API } from '@env/environment';

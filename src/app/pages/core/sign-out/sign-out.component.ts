@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { DialogSignOut } from '@app/shared/component/dialog-sign-out/dialog-sign-out.component';
+import { DialogSignOut } from '@app/shared/components/dialog-sign-out/dialog-sign-out.component';
 
 
 @Component({
