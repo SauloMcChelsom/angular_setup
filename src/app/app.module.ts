@@ -19,7 +19,7 @@ import { IsUserGuard } from './shared/guards/is_user.guard';
 import { AuthInterceptorService } from '@app/shared/interceptor/auth.interceptor'
 import { LocalStorageTokenUtils } from '@app/shared/utils/local-storege-token.utils'
 import { environment } from '../environments/environment'
-import { AppRoute } from '@app/app.route'
+import { AppRoute } from '@app/app-routing.module'
 import { HttpErrorResponseModule } from './shared/service/http_error/http_error_response.module';
 import { OpenSnackBarModule } from './shared/service/open_snack_bar/open_snack_bar.module';
 import { HeadNavModule } from './shared/service/head_nav/head_nav.module';
