@@ -13,6 +13,10 @@ export const ROUTES: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule),
+  },
+  {
+    path: 'todo',
+    loadChildren: () => import('./my_todo/todo.module').then(m => m.TodoModule),
   }
 ]
 

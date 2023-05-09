@@ -42,6 +42,8 @@ export class IsTokenValid {
 			//token existe
 			if(res.length >= 1){
 				//toke é valido
+				console.log(res)
+				console.log(res[0].refresh_token.expires_in)
 				if(new Date(<string>res[0].refresh_token.expires_in) > new Date() ){
 					this.getUser().subscribe((res: IHttpResponse) => {
 						if(res.getStatusCode() == 200){
@@ -92,7 +94,7 @@ export class IsTokenValid {
 					timestamp: new Date().toString(),
 					updated_at: new Date().toString(),
 					uid: 'sf56fd5-fd6f56df5fDFD5d65-dfdf8d5ddf56d',
-					role: Role.USER
+					role: Role.ADMIN
 				})
 			]
 		}),(e:any)=>{console.log(e)}))

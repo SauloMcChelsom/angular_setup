@@ -1,5 +1,7 @@
-rxjs
+estudar mais rxjs
 
-analiar todas arquivos da estruturar e ajustar, principalmente shared
+atualizar o store para versão mais robusta
 
-criar no store load true e false, array-last
+colocar as rotinas do coração consentrado na pasta ./services
+
+como redirecionamento, ....
