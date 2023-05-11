@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Todo } from '../../models/todo';
 import { Observable } from 'rxjs';
 
-const apiUrl = 'api/todos/';
+const apiUrl = 'http://localhost:3000/todos/';
 
 @Injectable({
   providedIn: 'root',

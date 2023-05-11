@@ -1,4 +1,3 @@
-
 <div class="d-flex flex-column h-100">
     <nav class="navbar navbar-light bg-light mb-4">
         <a class="navbar-brand">
@@ -10,16 +9,15 @@
         </div>
     </nav>
 
+    ->{{ selectedTodo$ | async }}
+
     <div class="flex-grow-1">
         <mat-sidenav-container class="example-container h-100">
 
             <!--[opened]="selectedTodo$ | async"-->
-            <mat-sidenav mode="side"
-                         
-                         [position]="'end'"
-                         [mode]="'side'">
-                <app-todo-detail *ngIf="selectedTodo$ | async as selectedTodo"
-                                 [todo]="selectedTodo"></app-todo-detail>
+            
+            <mat-sidenav mode="side" opened=true [position]="'end'" [mode]="'side'">
+                <app-todo-detail *ngIf="selectedTodo$ | async as selectedTodo" [todo]="selectedTodo"></app-todo-detail>
             </mat-sidenav>
 
             <mat-sidenav-content>

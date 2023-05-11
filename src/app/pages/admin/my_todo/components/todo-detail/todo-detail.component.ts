@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Todo } from '../../models/todo';
-//import { TodosStateService } from '../../services/todos-state.service';
+import { TodosStateService } from '../../services/todos-state.service';
 
 @Component({
   selector: 'app-todo-detail',
@@ -13,7 +13,7 @@ export class TodoDetailComponent implements OnInit {
   @Input()
   todo: Todo;
 
-  constructor(/*private todosService: TodosStateService*/) {}
+  constructor(private todosService: TodosStateService) {}
 
   ngOnInit() {}
 
@@ -24,17 +24,17 @@ export class TodoDetailComponent implements OnInit {
     };
 
     if (newTodo.id) {
-      //this.todosService.update(newTodo);
+      this.todosService.update(newTodo);
     } else {
-      //this.todosService.create(newTodo);
+      this.todosService.create(newTodo);
     }
   }
 
   delete() {
-    //.todosService.delete(this.todo);
+    this.todosService.delete(this.todo);
   }
 
   onClose() {
-    //this.todosService.clearSelectedTodo();
+    this.todosService.clearSelectedTodo();
   }
 }
