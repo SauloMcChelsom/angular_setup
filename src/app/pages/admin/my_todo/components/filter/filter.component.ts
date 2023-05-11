@@ -54,6 +54,15 @@ export class FilterComponent implements OnInit, OnDestroy {
       });
   }
 
+  public get search(){ 
+    return this.formGroup.get('search') 
+  }
+
+  public cleanUser(){
+    this.formGroup
+      .get('search').reset()
+  }
+
   ngOnDestroy(): void {
     this.unsubscribe$.next();
     this.unsubscribe$.complete();
