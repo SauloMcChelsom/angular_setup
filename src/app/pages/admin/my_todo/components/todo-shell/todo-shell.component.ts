@@ -18,11 +18,7 @@ export class TodoShellComponent {
   selectedTodo$: Observable<Todo> = this.todosState.selectedTodo$;
   filter$: Observable<Filter> = this.todosState.filter$;
 
-  constructor(private todosState: TodosStateService, private router: Router) {
-    this.selectedTodo$.subscribe((r)=>{
-      console.log(r)
-    })
-  }
+  constructor(private todosState: TodosStateService, private router: Router) {}
 
   selectTodo(todo: Todo) {
     this.todosState.selectTodo(todo);

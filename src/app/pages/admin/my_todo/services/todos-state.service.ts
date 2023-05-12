@@ -28,16 +28,21 @@ const initialState: TodoState = {
   providedIn: 'root',
 })
 export class TodosStateService extends StateService<TodoState> {
+
   private todosFiltered$: Observable<Todo[]> = this.select((state) => {
     return getTodosFiltered(state.todos, state.filter);
   });
+
   todosDone$: Observable<Todo[]> = this.todosFiltered$.pipe(
     map((todos) => todos.filter((todo) => todo.isDone))
   );
+
   todosNotDone$: Observable<Todo[]> = this.todosFiltered$.pipe(
     map((todos) => todos.filter((todo) => !todo.isDone))
   );
+
   filter$: Observable<Filter> = this.select((state) => state.filter);
+  
   selectedTodo$: Observable<Todo> = this.select((state) => {
     if (state.selectedTodoId === 0) {
       return new Todo();
@@ -59,7 +64,6 @@ export class TodosStateService extends StateService<TodoState> {
   }
 
   initNewTodo() {
-    console.log('initNewTodo')
     this.setState({ selectedTodoId: 0 });
   }
 
@@ -76,7 +80,7 @@ export class TodosStateService extends StateService<TodoState> {
     });
   }
 
-  // API CALLS
+  // API BACK END
   load() {
     this.apiService.getTodos().subscribe((todos) => this.setState({ todos }));
   }

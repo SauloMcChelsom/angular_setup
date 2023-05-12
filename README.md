@@ -26,4 +26,5 @@ Create a db.json file with some data
 
 Start JSON Server
 json-server --watch db.json
+json-server --watch db.json --delay 2000
 json-server db.json --delay 2000 --middlewares ./hello.js

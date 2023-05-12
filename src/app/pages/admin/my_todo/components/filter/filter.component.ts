@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Filter } from '../../models/filter';
 import { debounceTime, takeUntil } from 'rxjs/operators';
+import { Filter } from '../../models/filter';
 import { Subject } from 'rxjs';
 
 @Component({

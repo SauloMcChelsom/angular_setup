@@ -1,0 +1,31 @@
+.container {
+    padding: 15px;
+}
+
+.button-container{
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+}
+
+.field {
+    width: 100%;
+}
+
+table {
+  width: 100%;
+}
+
+.table-container{
+    background-color: transparent;
+    display: flex;
+}
+
+th {
+    font-weight: bold;
+}

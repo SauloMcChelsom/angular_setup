@@ -1,15 +1,85 @@
+<div class="container">
+    <div class="button-container">
+        <button mat-fab color="primary" aria-label="add new todo" title="button for add new todo" data-message="button for add new todo">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="filter-container">
+        <mat-form-field appearance="fill" floatLabel="auto" class="field">
+            <mat-label>Both a label and a placeholder</mat-label>
+            <input matInput placeholder="Simple placeholder">
+        </mat-form-field>
+        <mat-form-field 
+          appearance="fill"
+          hideRequiredMarker="true"
+          floatLabel="auto"
+        >
+            <mat-select required>
+                <mat-option>-- None --</mat-option>
+                <mat-option value="option">Private</mat-option>
+                <mat-option value="option">Business</mat-option>
+            </mat-select>
+            <mat-label><b>Filter</b></mat-label>
+      </mat-form-field>
+    </div>
+
+    <div class="table-container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Todo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Todo Done</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
 <div class="d-flex flex-column h-100">
     <nav class="navbar navbar-light bg-light mb-4">
-        <a class="navbar-brand">
-            Todos
-        </a>
         <div class="d-flex flex-grow-1 mb-2 justify-content-between mt-2">
             <button class="btn btn-primary btn-sm" (click)="addTodo()">New</button>
             <app-filter (filterUpdate)="onFilterUpdate($event)" [filter]="filter$ | async"></app-filter>
         </div>
     </nav>
-
-    ->{{ selectedTodo$ | async }}
 
     <div class="flex-grow-1">
         <mat-sidenav-container class="example-container h-100">
