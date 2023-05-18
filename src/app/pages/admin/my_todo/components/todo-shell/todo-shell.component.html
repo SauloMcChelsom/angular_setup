@@ -1,6 +1,6 @@
 <div class="container">
     <div class="button-container">
-        <button mat-fab color="primary" aria-label="add new todo" title="button for add new todo" data-message="button for add new todo">
+        <button (click)="addTodo()" mat-fab color="primary" aria-label="add new todo" title="button for add new todo" data-message="button for add new todo">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -20,47 +20,8 @@
         (selectTodo)="selectTodo($event)"></app-todo-list>
     </div>
 
-</div>
+    <mat-sidenav mode="side" opened=true [position]="'end'" [mode]="'side'">
+        <app-todo-detail *ngIf="selectedTodo$ | async as selectedTodo" [todo]="selectedTodo"></app-todo-detail>
+    </mat-sidenav>
 
-<div class="d-flex flex-column h-100">
-    <nav class="navbar navbar-light bg-light mb-4">
-        <div class="d-flex flex-grow-1 mb-2 justify-content-between mt-2">
-            <button class="btn btn-primary btn-sm" (click)="addTodo()">New</button>
-            
-        </div>
-    </nav>
-
-    <div class="flex-grow-1">
-        <mat-sidenav-container class="example-container h-100">
-
-            <!--[opened]="selectedTodo$ | async"-->
-            
-            <mat-sidenav mode="side" opened=true [position]="'end'" [mode]="'side'">
-                <app-todo-detail *ngIf="selectedTodo$ | async as selectedTodo" [todo]="selectedTodo"></app-todo-detail>
-            </mat-sidenav>
-
-            <mat-sidenav-content>
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="card h-100">
-                                <div class="card-header">
-                                    <span>Todos</span>
-                                </div>
-   
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card h-100">
-                                <div class="card-header">
-                                    <span>Todos Done</span>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </mat-sidenav-content>
-        </mat-sidenav-container>
-    </div>
 </div>

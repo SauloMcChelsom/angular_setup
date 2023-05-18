@@ -1,7 +1,9 @@
 <div class="card h-100">
     <div class="card-header">
+        <button (click)="onClose()" mat-icon-button aria-label="add new todo">
+            <mat-icon>west</mat-icon>
+        </button>
         <span>{{ todo.id ? 'Edit Todo' : 'Create Todo' }}</span>
-        <button (click)="onClose()" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     </div>
     <div class="card-body">
         <form #form="ngForm">
