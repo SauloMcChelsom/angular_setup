@@ -28,3 +28,7 @@ Start JSON Server
 json-server --watch db.json
 json-server --watch db.json --delay 2000
 json-server db.json --delay 2000 --middlewares ./hello.js
+----------------
+
+ng g m shared/components/skeleton
+ng g component shared/components/skeleton

@@ -8,6 +8,7 @@ import { TodoRoute } from './todo.route';
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { SkeletonModule } from '@app/shared/components/skeleton/skeleton.module';
 
 @NgModule({
     imports: [
@@ -16,6 +17,7 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
         CommonModule,
         MatSidenavModule,
         AngularMaterialModule,
+        SkeletonModule,
         TodoRoute
     ],
     declarations: [
