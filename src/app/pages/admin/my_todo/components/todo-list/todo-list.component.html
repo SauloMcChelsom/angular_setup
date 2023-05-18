@@ -1,9 +1,28 @@
-<ul class="list-group">
+<!--<ul class="list-group">
     <li class="list-group-item"
         *ngFor="let todo of todos"
         [ngClass]="{ active: selectedTodo?.id === todo.id }"
-        (click)="selectTodo.emit(todo)">{{ todo.title }} 
+        (click)="selectTodo.emit(todo)"
+    >{{ todo.title }} 
         <span *ngIf="todo.isBusiness" class="badge badge-info mr-1">Business</span>
         <span *ngIf="todo.isPrivate" class="badge badge-primary">Private</span>
     </li>
-</ul>
+</ul>-->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Todo Done</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let todo of todos" [ngClass]="{ active: selectedTodo?.id === todo.id }">
+            <th scope="row">1</th>
+            <td (click)="selectTodo.emit(todo)">
+                {{ todo.title }}
+                <span *ngIf="todo.isBusiness" class="badge badge-info mr-1">Business</span>
+                <span *ngIf="todo.isPrivate" class="badge badge-primary">Private</span>
+            </td>
+        </tr>
+    </tbody>
+</table>

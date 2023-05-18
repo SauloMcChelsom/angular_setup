@@ -1,0 +1,12 @@
+table {
+  width: 100%;
+}
+
+.table-container{
+    background-color: transparent;
+    display: flex;
+}
+
+th {
+    font-weight: bold;
+}
