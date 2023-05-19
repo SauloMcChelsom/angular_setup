@@ -10,20 +10,23 @@
     </div>
 
     <div class="table-container">
-        <app-todo-list [todos]="todosNotDone$ | async"
-        class="todo-list"
-        [selectedTodo]="selectedTodo$ | async"
-        (selectTodo)="selectTodo($event)"></app-todo-list>
-        <app-todo-list [todos]="todosDone$ | async"
-        class="todo-list"
-        [selectedTodo]="selectedTodo$ | async"
-        (selectTodo)="selectTodo($event)"></app-todo-list>
+        <app-todo-list 
+            [todos]="todosNotDone$ | async"
+            class="todo-list"
+            [selectedTodo]="selectedTodo$ | async"
+            (selectTodo)="selectTodo($event)"
+        ></app-todo-list>
+        <app-todo-list 
+            [todos]="todosDone$ | async"
+            class="todo-list"
+            [selectedTodo]="selectedTodo$ | async"
+            (selectTodo)="selectTodo($event)"
+        ></app-todo-list>
     </div>
-
+    <div [hidden]="!load$ == false">
+        <app-skeleton></app-skeleton>
+    </div>
     <mat-sidenav mode="side" opened=true [position]="'end'" [mode]="'side'">
         <app-todo-detail *ngIf="selectedTodo$ | async as selectedTodo" [todo]="selectedTodo"></app-todo-detail>
     </mat-sidenav>
-
-    <app-skeleton></app-skeleton>
-
 </div>

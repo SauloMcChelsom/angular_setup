@@ -17,7 +17,7 @@
       "id": 3,
       "title": "Greorne",
       "isDone": true,
-      "isBusiness": true
+      "isBusiness": false
     },
     {
       "title": "davi",
@@ -28,7 +28,7 @@
     {
       "title": "green",
       "isDone": true,
-      "isPrivate": true,
+      "isPrivate": false,
       "id": 5
     }
   ],

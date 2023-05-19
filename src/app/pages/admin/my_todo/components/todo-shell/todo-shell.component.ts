@@ -13,12 +13,24 @@ import { TodosStateService } from '../../services/todos-state.service';
 })
 export class TodoShellComponent {
 
-  todosDone$: Observable<Todo[]> = this.todosState.todosDone$;
-  todosNotDone$: Observable<Todo[]> = this.todosState.todosNotDone$;
-  selectedTodo$: Observable<Todo> = this.todosState.selectedTodo$;
-  filter$: Observable<Filter> = this.todosState.filter$;
+  public todosDone$: Observable<Todo[]> = this.todosState.todosDone$;
+  public todosNotDone$: Observable<Todo[]> = this.todosState.todosNotDone$;
+  public selectedTodo$: Observable<Todo> = this.todosState.selectedTodo$;
+  public filter$: Observable<Filter> = this.todosState.filter$;
+  public load$:boolean = false
 
-  constructor(private todosState: TodosStateService, private router: Router) {}
+  constructor(private todosState: TodosStateService, private router: Router) {
+    this.todosNotDone$.subscribe((r)=>{
+      if(r.length >= 1){
+        this.load$ = true;
+      }
+    })
+    this.todosNotDone$.subscribe((r)=>{
+      if(r.length >= 1){
+        this.load$ = true;
+      }
+    })
+  }
 
   selectTodo(todo: Todo) {
     this.todosState.selectTodo(todo);

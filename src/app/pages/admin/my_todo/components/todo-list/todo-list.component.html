@@ -1,13 +1,3 @@
-<!--<ul class="list-group">
-    <li class="list-group-item"
-        *ngFor="let todo of todos"
-        [ngClass]="{ active: selectedTodo?.id === todo.id }"
-        (click)="selectTodo.emit(todo)"
-    >{{ todo.title }} 
-        <span *ngIf="todo.isBusiness" class="badge badge-info mr-1">Business</span>
-        <span *ngIf="todo.isPrivate" class="badge badge-primary">Private</span>
-    </li>
-</ul>-->
 <table class="table">
     <thead>
         <tr>
@@ -17,11 +7,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let todo of todos" [ngClass]="{ active: selectedTodo?.id === todo.id }">
-            <th scope="row">1</th>
+            <th scope="row">{{ todo.id }}</th>
             <td (click)="selectTodo.emit(todo)">
                 {{ todo.title }}
-                <span *ngIf="todo.isBusiness" class="badge badge-info mr-1">Business</span>
-                <span *ngIf="todo.isPrivate" class="badge badge-primary">Private</span>
+                <button *ngIf="todo.isBusiness" mat-button color="primary"> Business </button>
+                <button *ngIf="todo.isPrivate" mat-button color="warn"> Private </button>
             </td>
         </tr>
     </tbody>
