@@ -20,6 +20,6 @@ export class SignOutService {
 			message:'user authetication with success',
 			timestamp:new Date().toString(),
 			results:[]
-		}),(e:any)=>{console.log(e)}))
+		}),(e:any)=>{}))
     }
 }

@@ -1,19 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import * as BookActionTypes from './index.actions';
-
-export interface AppState {
-  selected: any
-  body: any
-  isLoading?: boolean
-  error?: any
-}
-
-export const initialState: AppState = {
-	selected: null,
-	body: null,  
-	isLoading: false,
-	error: null
-}
+import { initialState } from '../../models/app-state';
 
 export const bookReducer = createReducer(
   initialState,
@@ -26,7 +13,7 @@ export const bookReducer = createReducer(
   on(BookActionTypes.loadBookByUserIdSuccessAction, (state, { book }) => ({
     ...state,
     isLoading: false,
-    body: book
+    body: book[0],
   })),
 
   on(BookActionTypes.loadBookByUserIdFailureAction, (state, { error }) => ({
@@ -68,20 +55,6 @@ export const bookReducer = createReducer(
     ...state,
     isLoading: false,
     error: error
-  })), 
-
-  on(BookActionTypes.detailNotificationAction, (state, { item }) => ({
-    ...state,
-    isLoading: false,
-    selected: item,
-    error: null
-  })),
-
-  on(BookActionTypes.updateNotificationAction, (state, { item }) => ({
-    ...state,
-    isLoading: false,
-    selected: item,
-    error: null
   })),
  
   on(BookActionTypes.updateRequestAction, state => ({

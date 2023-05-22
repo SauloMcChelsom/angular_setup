@@ -1,49 +1,19 @@
 import { createSelector } from '@ngrx/store'
 import { Todo } from '../../models/todo';
+import { AppState } from '../../models/app-state';
 
-export interface Success {
-	statusCode: number
-	code: string
-	message: string
-	description: string
-	timestamp: string
-}
-
-export interface errors {
-	statusCode: number
-	code: string
-	message: string
-	description: string
-	timestamp: string
-}
-
-export interface AppState {
-  selected: any
-  body: any
-  isLoading?: boolean
-  error?: any
-}
-
-export const initialState: AppState = {
-	selected: null,
-	body: null,  
-	isLoading: false,
-	error: null
-}
-
-   
 const BookFeature = (state: any) => {
   return state.bookStore//StoreModule.forFeature('bookStore', bookReducer),
 }
   
 export const getBooks = createSelector(
   BookFeature,
-  (state: AppState) => <Todo[]>state.body?.results
+  (state: AppState) => <Todo[]>state.body
 )
 
 export const getFilter = createSelector(
   BookFeature,
-  (state: AppState) => <Success>state.body
+  (state: AppState) => <Todo[]>state.body
 )
   
 export const getBook = createSelector(

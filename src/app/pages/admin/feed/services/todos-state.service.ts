@@ -24,9 +24,7 @@ const initialState: TodoState = {
   },
 };
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class TodosStateService extends StateService<TodoState> {
 
   private todosFiltered$: Observable<Todo[]> = this.select((state) => {

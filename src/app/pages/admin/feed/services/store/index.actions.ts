@@ -1,21 +1,7 @@
 import { createAction, props } from '@ngrx/store';
 import { Todo } from '../../models/todo';
-
-export interface Success {
-	statusCode: number
-	code: string
-	message: string
-	description: string
-	timestamp: string
-}
-
-export interface errors {
-	statusCode: number
-	code: string
-	message: string
-	description: string
-	timestamp: string
-}
+import { Success } from '../../models/success';
+import { errors } from '../../models/erros';
 
 export enum ActionTypes {
   LOAD_BOOK_REQUEST = '[Book] Load Book Request',
@@ -25,10 +11,7 @@ export enum ActionTypes {
   SAVE_REQUEST = '[Book] Save',
   SAVE_FAILURE = '[Book] Save Failure',
   SAVE_SUCCESS = '[Book] Save Success',
- 
-  UPDATE_NOTIFICATION = '[Book] Notification',
-  DETAIL_NOTIFICATION = '[Book] Detail Notification',
-  CONTROL_NOTIFICATION = '[Book] Control Notification',
+
   UPDATE_REQUEST = '[Book] Update',
   UPDATE_FAILURE = '[Book] Update Failure',
   UPDATE_SUCCESS = '[Book] Update Success',
@@ -53,8 +36,6 @@ export const loadBookByUserIdFailureAction = createAction(
   props<{ error: errors }>()
 );
 
-////////
-
 export const loadBookRequestAction = createAction(
   ActionTypes.LOAD_BOOK_REQUEST,
   props<{ id: number }>()
@@ -70,8 +51,6 @@ export const loadBookFailureAction = createAction(
   props<{ error: errors }>()
 );
 
-////////
-  
 export const saveRequestAction = createAction(
   ActionTypes.SAVE_REQUEST,
   props<{ item: Todo }>()
@@ -87,20 +66,7 @@ export const saveSuccessAction = createAction(
   props<{ item: Success }>()
 );
   
-/// detail
 
-export const detailNotificationAction = createAction(
-  ActionTypes.DETAIL_NOTIFICATION,
-  props<{ item: Todo }>()
-);
-
-///
-
-export const updateNotificationAction = createAction(
-  ActionTypes.UPDATE_NOTIFICATION,
-  props<{ item: Todo }>()
-);
-  
 export const updateRequestAction = createAction(
   ActionTypes.UPDATE_REQUEST,
   props<{ item: Todo }>()
@@ -116,8 +82,6 @@ export const updateSuccessAction = createAction(
   props<{ item: Success }>()
 );
     
-////
-  
 export const deleteRequestAction = createAction(
   ActionTypes.DELETE_REQUEST,
   props<{ item: Todo }>()

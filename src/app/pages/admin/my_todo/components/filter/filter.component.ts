@@ -53,7 +53,6 @@ export class FilterComponent implements OnInit, OnDestroy {
     });
 
     this.formGroup.get('category').valueChanges.pipe(takeUntil(this.unsubscribe$)).subscribe((value) => {
-      console.log(value)
         let category_value = { isBusiness:false, isPrivate:false}
         if(value == 'isBusiness'){
           category_value =  { isBusiness:true, isPrivate:false}
