@@ -31,4 +31,10 @@ json-server db.json --delay 2000 --middlewares ./hello.js
 ----------------
 
 ng g m shared/components/skeleton
-ng g component shared/components/skeleton
+ng g c shared/components/skeleton
+
+ng g m pages/admin/course --routing
+ng g c pages/admin/course
+ng g s pages/admin/course
+ng g r pages/admin/course
+ng g i pages/admin/course

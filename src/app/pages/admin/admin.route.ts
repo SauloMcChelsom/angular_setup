@@ -17,6 +17,10 @@ export const ROUTES: Routes = [
   {
     path: 'todo',
     loadChildren: () => import('./my_todo/todo.module').then(m => m.TodoModule),
+  },
+  {
+    path: 'course',
+    loadChildren: () => import('./course/course.module').then(m => m.CourseModule),
   }
 ]
 

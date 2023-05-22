@@ -12,7 +12,6 @@ import { SettingsModule } from './settings/settings.module';
     CommonModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-
     HomeModule,
     SignOutModule,
     SettingsModule,
