@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store'
+import { Observable } from 'rxjs';
 import { StateService } from '@app/shared/stores/customized/state.service';
 import { Todo } from '../models/todo';
 import { Filter } from '../models/filter';
-import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { TodosApiService } from './api/todos-api.service';
+import * as bookSelectors from './store/index.selectors'
+import * as bookActions from './store/index.actions'
 
 interface TodoState {
   todos: Todo[];
@@ -25,88 +28,59 @@ const initialState: TodoState = {
 };
 
 @Injectable()
-export class TodosStateService extends StateService<TodoState> {
+export class TodosStateService {
 
-  private todosFiltered$: Observable<Todo[]> = this.select((state) => {
-    return getTodosFiltered(state.todos, state.filter);
-  });
+  private todosFiltered$: Observable<Todo[]>;
 
-  todosDone$: Observable<Todo[]> = this.todosFiltered$.pipe(
-    map((todos) => todos.filter((todo) => todo.isDone))
-  );
+  todosDone$: Observable<Todo[]>;
 
-  todosNotDone$: Observable<Todo[]> = this.todosFiltered$.pipe(
-    map((todos) => todos.filter((todo) => !todo.isDone))
-  );
+  todosNotDone$: Observable<Todo[]>;
 
-  filter$: Observable<Filter> = this.select((state) => state.filter);
+  filter$: Observable<Filter>;
   
-  selectedTodo$: Observable<Todo> = this.select((state) => {
-    if (state.selectedTodoId === 0) {
-      return new Todo();
-    }
-    return state.todos.find((item) => item.id === state.selectedTodoId);
-  }).pipe(
-    // Multicast to prevent multiple executions due to multiple subscribers
-    shareReplay({ refCount: true, bufferSize: 1 })
-  );
+  selectedTodo$: Observable<Todo>;
 
-  constructor(private apiService: TodosApiService) {
-    super(initialState);
-
-    this.load();
+  constructor(private store$: Store<any>) {
+   
+    //super(initialState);
+    console.log('----- feed ---------')
+    this.load(3);
+    
   }
 
   selectTodo(todo: Todo) {
-    this.setState({ selectedTodoId: todo.id });
+    
   }
 
   initNewTodo() {
-    this.setState({ selectedTodoId: 0 });
+    
   }
 
   clearSelectedTodo() {
-    this.setState({ selectedTodoId: undefined });
+    
   }
 
   updateFilter(filter: Filter) {
-    this.setState({
-      filter: {
-        ...this.state.filter,
-        ...filter,
-      },
-    });
+
   }
 
   // API BACK END
-  load() {
-    this.apiService.getTodos().subscribe((todos) => this.setState({ todos }));
+  load(user_id) {
+    this.store$.dispatch(bookActions.loadBookRequestAction({
+      id:user_id
+    }))
   }
 
   create(todo: Todo) {
-    this.apiService.createTodo(todo).subscribe((newTodo) => {
-      this.setState({
-        todos: [...this.state.todos, newTodo],
-        selectedTodoId: newTodo.id,
-      });
-    });
+
   }
 
   update(todo: Todo) {
-    this.apiService.updateTodo(todo).subscribe((updatedTodo) => {
-      this.setState({
-        todos: this.state.todos.map((item) => (item.id === todo.id ? updatedTodo : item)),
-      });
-    });
+
   }
 
   delete(todo: Todo) {
-    this.apiService.deleteTodo(todo).subscribe(() => {
-      this.setState({
-        selectedTodoId: undefined,
-        todos: this.state.todos.filter((item) => item.id !== todo.id),
-      });
-    });
+
   }
 }
 

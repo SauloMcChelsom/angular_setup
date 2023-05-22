@@ -15,15 +15,15 @@ export class BookStoreEffects {
   private parameters:any = null
 
   loadBookByUserIdRequestEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(bookActions.loadBookByUserIdRequestAction),
+    ofType(bookActions.loadBookRequestAction),
       switchMap(action => {
         return this.dataService.getTodoById(action.id).pipe(
           //tap(()=>console.log("loadBookByUserIdRequestEffect", action.id)),
           map((book: any) => {
-              return bookActions.loadBookByUserIdSuccessAction({ book })
+              return bookActions.loadBookSuccessAction({ book })
           }),
           catchError((error: any) => {
-            return observableOf(bookActions.loadBookByUserIdFailureAction({ error }))
+            return observableOf(bookActions.loadBookFailureAction({ error }))
           })
         )
       })
@@ -46,10 +46,10 @@ export class BookStoreEffects {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
         map((book: any) => {
             this.parameters = 'NEW_INPUT'
-            return bookActions.loadBookByUserIdSuccessAction({ book })
+            return bookActions.loadBookSuccessAction({ book })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookByUserIdFailureAction({ error }))
+          return observableOf(bookActions.loadBookFailureAction({ error }))
         })
       )
     })
@@ -72,10 +72,10 @@ export class BookStoreEffects {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
         map((book: any) => {
           console.log(book)
-            return bookActions.loadBookByUserIdSuccessAction({ book })
+            return bookActions.loadBookSuccessAction({ book })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookByUserIdFailureAction({ error }))
+          return observableOf(bookActions.loadBookFailureAction({ error }))
         })
       )
     })
@@ -97,10 +97,10 @@ export class BookStoreEffects {
     switchMap(action => {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
         map((book: any) => {
-            return bookActions.loadBookByUserIdSuccessAction({ book })
+            return bookActions.loadBookSuccessAction({ book })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookByUserIdFailureAction({ error }))
+          return observableOf(bookActions.loadBookFailureAction({ error }))
         })
       )
     })

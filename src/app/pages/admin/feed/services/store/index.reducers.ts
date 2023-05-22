@@ -4,23 +4,6 @@ import { initialState } from '../../models/app-state';
 
 export const bookReducer = createReducer(
   initialState,
-
-  on(BookActionTypes.loadBookByUserIdRequestAction, (state, {id}) => ({
-    ...state,
-    isLoading: true 
-  })),
-
-  on(BookActionTypes.loadBookByUserIdSuccessAction, (state, { book }) => ({
-    ...state,
-    isLoading: false,
-    body: book[0],
-  })),
-
-  on(BookActionTypes.loadBookByUserIdFailureAction, (state, { error }) => ({
-    ...state,
-    isLoading: false,
-    error: error
-  })), 
   
   on(BookActionTypes.loadBookRequestAction, (state, {id}) => ({
     ...state,

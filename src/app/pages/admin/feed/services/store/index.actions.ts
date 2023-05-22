@@ -21,21 +21,6 @@ export enum ActionTypes {
   DELETE_SUCCESS = '[Book] Delete Success'
 }
 
-export const loadBookByUserIdRequestAction = createAction(
-  ActionTypes.LOAD_BOOK_REQUEST,
-  props<{ id: number }>()
-);
-
-export const loadBookByUserIdSuccessAction = createAction(
-  ActionTypes.LOAD_BOOK_SUCCESS,
-  props<{ book: Success }>()
-);
-
-export const loadBookByUserIdFailureAction = createAction(
-  ActionTypes.LOAD_BOOK_FAILURE,
-  props<{ error: errors }>()
-);
-
 export const loadBookRequestAction = createAction(
   ActionTypes.LOAD_BOOK_REQUEST,
   props<{ id: number }>()
