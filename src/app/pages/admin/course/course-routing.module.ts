@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CourseComponent } from './course.component';
+import { CourseComponent } from '../feed/course.component';
 import { AuthGuard } from '@app/shared/guards/auth.guard';
 import { IsAdminGuard } from '@app/shared/guards/is_admin.guard';
 

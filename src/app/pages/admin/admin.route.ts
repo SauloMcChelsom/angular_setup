@@ -20,7 +20,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'course',
-    loadChildren: () => import('./course/course.module').then(m => m.CourseModule),
+     loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule),
   }
 ]
 

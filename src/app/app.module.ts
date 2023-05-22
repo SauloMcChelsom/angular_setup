@@ -3,6 +3,9 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { StoreDevtoolsModule } from '@ngrx/store-devtools'
+import { EffectsModule } from '@ngrx/effects'
+import { StoreModule } from '@ngrx/store'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AngularMaterialModule } from '@app/shared/theme/angular-material.module'
 import { AppComponent } from '@app/app.component'
@@ -38,6 +41,9 @@ import { LocalStoregeModule } from './shared/services/local_storege/local_storeg
     FormsModule,
     AngularMaterialModule,
     AppRoute,
+    EffectsModule.forRoot([]),
+    StoreModule.forRoot([]),
+    StoreDevtoolsModule.instrument({maxAge: 25}),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
