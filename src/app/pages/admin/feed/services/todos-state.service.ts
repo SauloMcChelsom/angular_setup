@@ -10,24 +10,6 @@ import * as appSelectors from './store/index.selectors'
 import * as appActions from './store/index.actions'
 import { tap } from 'rxjs/operators';
 
-interface TodoState {
-  todos: Todo[];
-  selectedTodoId: number;
-  filter: Filter;
-}
-
-const initialState: TodoState = {
-  todos: [],
-  selectedTodoId: undefined,
-  filter: {
-    search: '',
-    category: {
-      isBusiness: false,
-      isPrivate: false,
-    },
-  },
-};
-
 @Injectable()
 export class TodosStateService {
 
