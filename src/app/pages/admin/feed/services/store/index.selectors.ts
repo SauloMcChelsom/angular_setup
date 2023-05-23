@@ -3,7 +3,7 @@ import { Todo } from '../../models/todo';
 import { AppState } from '../../models/app-state';
 
 const BookFeature = (state: any) => {
-  return state.bookStore//StoreModule.forFeature('bookStore', bookReducer),
+  return state.feedStoreVersion//StoreModule.forFeature('feedStoreVersion', bookReducer),
 }
 
 export const getBook = createSelector(

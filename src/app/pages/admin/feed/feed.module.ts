@@ -41,7 +41,7 @@ const Modules = [
   imports: [
     CommonModule,
     ...Modules,
-    StoreModule.forFeature('bookStore', bookReducer),
+    StoreModule.forFeature('feedStoreVersion', bookReducer),
     EffectsModule.forFeature([BookStoreEffects])
   ],
   providers: [TodosApiService, TodosStateService],
