@@ -1,16 +1,25 @@
-import { Component, OnInit } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store'
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Todo } from '../../models/todo';
 
 @Component({
-  selector: 'list',
-  templateUrl: './list.component.html'
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListComponent implements OnInit {
 
-  constructor(private store$: Store<any>, private router: Router, private ref: ChangeDetectorRef) {}
+  @Input()
+  todos: Todo[];
 
-  ngOnInit() {
-  }
+  @Input()
+  selectedTodo: Todo;
+
+  @Output()
+  selectTodo: EventEmitter<Todo> = new EventEmitter();
+
+  constructor() { }
+
+  ngOnInit(): void {}
+
 }

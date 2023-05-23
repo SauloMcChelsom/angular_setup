@@ -1,20 +1,17 @@
-
-    <div *ngFor="let todo of todosDone$ | async" class="table-container">
-        <div>{{ todo.id }}</div>
-        <div>{{ todo.title }}</div>
-        <div>{{ todo.isDone }}</div>
-        <div>{{ todo.isBusiness }}</div>
-        <div>{{ todo.isPrivate }}</div>
-    </div>
-    <div>-----------</div>
-    <div *ngFor="let todo of todosNotDone$ | async" class="table-container">
-        <div>{{ todo.id }}</div>
-        <div>{{ todo.title }}</div>
-        <div>{{ todo.isDone }}</div>
-        <div>{{ todo.isBusiness }}</div>
-        <div>{{ todo.isPrivate }}</div>
+    <div class="table-container">
+        <app-list 
+            [todos]="todosNotDone$ | async"
+            class="todo-list"
+            [selectedTodo]="selectedTodo$ | async"
+            (selectTodo)="selectTodo($event)"
+        ></app-list>
+        <app-list 
+            [todos]="todosDone$ | async"
+            class="todo-list"
+            [selectedTodo]="selectedTodo$ | async"
+            (selectTodo)="selectTodo($event)"
+        ></app-list>
     </div>
     <div [hidden]="!load$ == false">
         <app-skeleton></app-skeleton>
     </div>
-

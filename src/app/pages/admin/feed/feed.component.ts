@@ -12,6 +12,7 @@ export class FeedComponent implements OnInit {
 
   public todosDone$: Observable<Todo[]> = this.todosState.todosDone$;
   public todosNotDone$: Observable<Todo[]> = this.todosState.todosNotDone$;
+  public selectedTodo$: Observable<Todo> = this.todosState.selectedTodo$;
   public load$:boolean = false
 
   constructor(private todosState: TodosStateService) { 
@@ -32,4 +33,8 @@ export class FeedComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  selectTodo(todo: Todo) {
+    this.todosState.selectTodo(todo);
+  }
 }
