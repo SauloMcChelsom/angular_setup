@@ -8,7 +8,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { TodosApiService } from './api/todos-api.service';
 import * as bookSelectors from './store/index.selectors'
 import * as bookActions from './store/index.actions'
-
+import { tap } from 'rxjs/operators';
 interface TodoState {
   todos: Todo[];
   selectedTodoId: number;
@@ -32,9 +32,13 @@ export class TodosStateService {
 
   private todosFiltered$: Observable<Todo[]>;
 
-  todosDone$: Observable<Todo[]>;
+  todosDone$: Observable<Todo[]> = this.store$.select(bookSelectors.getBooks).pipe(
+    map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))
+  );
 
-  todosNotDone$: Observable<Todo[]>;
+  todosNotDone$: Observable<Todo[]> = this.store$.select(bookSelectors.getBooks).pipe(
+    map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))
+  );
 
   filter$: Observable<Filter>;
   
@@ -44,7 +48,7 @@ export class TodosStateService {
    
     //super(initialState);
     console.log('----- feed ---------')
-    this.load(3);
+    this.load();
     
   }
 
@@ -65,10 +69,12 @@ export class TodosStateService {
   }
 
   // API BACK END
-  load(user_id) {
-    this.store$.dispatch(bookActions.loadBookRequestAction({
-      id:user_id
-    }))
+  load() {
+    this.store$.dispatch(bookActions.loadBookAllAction())
+
+    this.store$.select(bookSelectors.getBooks).subscribe((r)=>{
+      console.log('select -> ',r)
+    })
   }
 
   create(todo: Todo) {

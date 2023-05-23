@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of as observableOf } from 'rxjs';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { TodosApiService } from '../api/todos-api.service';
 import * as bookActions from './index.actions';
  
@@ -14,11 +14,26 @@ export class BookStoreEffects {
 
   private parameters:any = null
 
+  loadBookAllRequestEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(bookActions.loadBookAllAction),
+    switchMap(action => {
+      return this.dataService.getTodos().pipe(
+        tap((book)=>console.log("getTodos--> ", book)),
+        map((book: any) => {
+            return bookActions.loadBookSuccessAction({ book })
+        }),
+        catchError((error: any) => {
+          return observableOf(bookActions.loadBookFailureAction({ error }))
+        })
+      )
+    })
+  ))
+
   loadBookByUserIdRequestEffect$ = createEffect(() => this.actions$.pipe(
     ofType(bookActions.loadBookRequestAction),
       switchMap(action => {
         return this.dataService.getTodoById(action.id).pipe(
-          //tap(()=>console.log("loadBookByUserIdRequestEffect", action.id)),
+          tap((book)=>console.log("getTodoById--> ", book)),
           map((book: any) => {
               return bookActions.loadBookSuccessAction({ book })
           }),

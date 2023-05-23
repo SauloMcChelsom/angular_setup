@@ -1,9 +1,9 @@
 import { createAction, props } from '@ngrx/store';
 import { Todo } from '../../models/todo';
-import { Success } from '../../models/success';
 import { errors } from '../../models/erros';
 
 export enum ActionTypes {
+  LOAD_BOOK_ALL = '[Book] Load Book All',
   LOAD_BOOK_REQUEST = '[Book] Load Book Request',
   LOAD_BOOK_FAILURE = '[Book] Load Book Failure',
   LOAD_BOOK_SUCCESS = '[Book] Load Book Success',
@@ -21,6 +21,10 @@ export enum ActionTypes {
   DELETE_SUCCESS = '[Book] Delete Success'
 }
 
+export const loadBookAllAction = createAction(
+  ActionTypes.LOAD_BOOK_ALL,
+);
+
 export const loadBookRequestAction = createAction(
   ActionTypes.LOAD_BOOK_REQUEST,
   props<{ id: number }>()
@@ -28,7 +32,7 @@ export const loadBookRequestAction = createAction(
   
 export const loadBookSuccessAction = createAction(
   ActionTypes.LOAD_BOOK_SUCCESS,
-  props<{ book: Success }>()
+  props<{ book: Todo }>()
 );
   
 export const loadBookFailureAction = createAction(
@@ -48,7 +52,7 @@ export const saveFailureAction = createAction(
   
 export const saveSuccessAction = createAction(
   ActionTypes.SAVE_SUCCESS,
-  props<{ item: Success }>()
+  props<{ item: Todo }>()
 );
   
 
@@ -64,7 +68,7 @@ export const updateFailureAction = createAction(
   
 export const updateSuccessAction = createAction(
   ActionTypes.UPDATE_SUCCESS,
-  props<{ item: Success }>()
+  props<{ item: Todo }>()
 );
     
 export const deleteRequestAction = createAction(
@@ -79,5 +83,5 @@ export const deleteFailureAction = createAction(
     
 export const deleteSuccessAction = createAction(
   ActionTypes.DELETE_SUCCESS,
-  props<{ item: Success }>()
+  props<{ item: Todo }>()
 );

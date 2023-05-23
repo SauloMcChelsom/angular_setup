@@ -10,6 +10,7 @@ import { TodosApiService } from './services/api/todos-api.service'
 import { TodosStateService } from './services/todos-state.service'
 
 import { AngularMaterialModule } from '@app/shared/theme/angular-material.module';
+import { SkeletonModule } from '@app/shared/components/skeleton/skeleton.module';
 
 import { ListComponent } from './components/list/list.component'
 import { CreateComponent } from './components/create/create.component'
@@ -30,6 +31,7 @@ const Components = [
 const Modules = [
   AngularMaterialModule,
   FeedRoutingModule,
+  SkeletonModule
 ]
 
 @NgModule({

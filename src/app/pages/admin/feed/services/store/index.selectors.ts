@@ -5,22 +5,17 @@ import { AppState } from '../../models/app-state';
 const BookFeature = (state: any) => {
   return state.bookStore//StoreModule.forFeature('bookStore', bookReducer),
 }
-  
-export const getBooks = createSelector(
-  BookFeature,
-  (state: AppState) => <Todo[]>state.body
-)
 
-export const getFilter = createSelector(
-  BookFeature,
-  (state: AppState) => <Todo[]>state.body
-)
-  
 export const getBook = createSelector(
   BookFeature,
-  (state: AppState, id: number) => state.body//.filter(x=> x.id === id)
+  (state: AppState, id: number) =>  <Todo[]>state.body.filter(x=> x.id === id)
 )
-  
+
+export const getBooks = createSelector(
+  BookFeature,
+  (state: AppState) => <any>state.selected
+)
+
 export const getSelectedBook = createSelector(
   BookFeature,
   (state: AppState) => state.selected

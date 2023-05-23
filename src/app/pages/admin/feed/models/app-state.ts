@@ -1,10 +1,11 @@
+import { errors } from './erros';
 import { Todo } from './todo';
 
 export interface AppState {
-  selected: any
+  selected: Todo
   body: Array<Todo>;
   isLoading?: boolean
-  error?: any
+  error?: errors
 }
 
 export const initialState: AppState = {

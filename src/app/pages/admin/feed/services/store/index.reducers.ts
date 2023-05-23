@@ -4,6 +4,11 @@ import { initialState } from '../../models/app-state';
 
 export const bookReducer = createReducer(
   initialState,
+
+  on(BookActionTypes.loadBookAllAction, (state, {}) => ({
+    ...state,
+    isLoading: true,
+  })),
   
   on(BookActionTypes.loadBookRequestAction, (state, {id}) => ({
     ...state,

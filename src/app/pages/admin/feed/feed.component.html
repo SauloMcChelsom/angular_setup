@@ -1,11 +1,20 @@
-<div class="container">
-  <div class="row">
-    <h3>Feed</h3>
-    <div class="col-12 col-md-12 col-lg-12 card-content-center mr-b">
-      <create></create>
+
+    <div *ngFor="let todo of todosDone$ | async" class="table-container">
+        <div>{{ todo.id }}</div>
+        <div>{{ todo.title }}</div>
+        <div>{{ todo.isDone }}</div>
+        <div>{{ todo.isBusiness }}</div>
+        <div>{{ todo.isPrivate }}</div>
     </div>
-    <div class="col-12 col-md-12 col-lg-12 card-content-center mr-b">
-      <list></list>
+    <div>-----------</div>
+    <div *ngFor="let todo of todosNotDone$ | async" class="table-container">
+        <div>{{ todo.id }}</div>
+        <div>{{ todo.title }}</div>
+        <div>{{ todo.isDone }}</div>
+        <div>{{ todo.isBusiness }}</div>
+        <div>{{ todo.isPrivate }}</div>
     </div>
-  </div>
-</div>
+    <div [hidden]="!load$ == false">
+        <app-skeleton></app-skeleton>
+    </div>
+
