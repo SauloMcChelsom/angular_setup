@@ -1,3 +1,14 @@
+<div class="container">
+    <div class="button-container">
+        <button (click)="addTodo()" mat-fab color="primary" aria-label="add new todo" title="button for add new todo" data-message="button for add new todo">
+            <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div class="filter-container">
+        <!--<app-filter class="field" (filterUpdate)="onFilterUpdate($event)" [filter]="filter$ | async"></app-filter>-->
+    </div>
+
     <div class="table-container">
         <app-list 
             [todos]="todosNotDone$ | async"
@@ -15,3 +26,7 @@
     <div [hidden]="!load$ == false">
         <app-skeleton></app-skeleton>
     </div>
+    <mat-sidenav mode="side" opened=true [position]="'end'" [mode]="'side'">
+        <!--<app-todo-detail *ngIf="selectedTodo$ | async as selectedTodo" [todo]="selectedTodo"></app-todo-detail>-->
+    </mat-sidenav>
+</div>

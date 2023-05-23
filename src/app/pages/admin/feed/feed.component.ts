@@ -37,4 +37,8 @@ export class FeedComponent implements OnInit {
   selectTodo(todo: Todo) {
     this.todosState.selectTodo(todo);
   }
+
+  addTodo() {
+    this.todosState.initNewTodo();
+  }
 }

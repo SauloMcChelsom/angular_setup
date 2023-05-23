@@ -1,7 +1,27 @@
-@media (min-width: 800px){
-  .card-content-center{
+.container {
+    padding: 15px;
+}
+
+.button-container{
+    padding: 15px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
-  }
+}
+
+.filter-container {
+    display: flex;
+    justify-content: center;
+}
+
+.field {
+    width: 100%;
+}
+
+.table-container{
+    background-color: transparent;
+    display: flex;
+}
+
+.todo-list {
+  width: 100%;
 }
