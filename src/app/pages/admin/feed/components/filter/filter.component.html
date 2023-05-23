@@ -1,0 +1,31 @@
+<form [formGroup]="formGroup" class="d-flex m-0">
+    <mat-form-field appearance="fill" floatLabel="auto" class="field" [formGroup]="formGroup">
+      <mat-label>Both a label and a placeholder</mat-label>
+      <input matInput placeholder="Simple placeholder" formControlName="search">
+    </mat-form-field>
+    <mat-form-field 
+      appearance="fill"
+      hideRequiredMarker="true"
+      floatLabel="auto" 
+    >
+      <mat-select formControlName="category"  required>
+          <mat-option>-- None --</mat-option>
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+      </mat-select>
+      <mat-label><b>Filter</b></mat-label>
+    </mat-form-field>
+     
+     <!--<div class="d-flex align-items-center" formGroupName="category">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="filterIsPrivate" formControlName="isPrivate">
+            <label class="form-check-label font-weight-bold text-primary" for="filterIsPrivate">Private</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="filterIsBusiness" formControlName="isBusiness">
+            <label class="form-check-label font-weight-bold text-info" for="filterIsBusiness">Business</label>
+        </div>
+      </div>-->
+    
+</form>

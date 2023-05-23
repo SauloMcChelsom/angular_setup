@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TodosStateService } from './services/todos-state.service';
 import { Observable } from 'rxjs';
 import { Todo } from './models/todo';
+import { Filter } from './models/filter';
 
 @Component({
   selector: 'app-feed',
@@ -10,6 +11,7 @@ import { Todo } from './models/todo';
 })
 export class FeedComponent implements OnInit {
 
+  public filter$: Observable<Filter> = this.todosState.filter$;
   public todosDone$: Observable<Todo[]> = this.todosState.todosDone$;
   public todosNotDone$: Observable<Todo[]> = this.todosState.todosNotDone$;
   public selectedTodo$: Observable<Todo> = this.todosState.selectedTodo$;
@@ -40,5 +42,9 @@ export class FeedComponent implements OnInit {
 
   addTodo() {
     this.todosState.initNewTodo();
+  }
+
+  onFilterUpdate(filter: Filter) {
+    this.todosState.updateFilter(filter);
   }
 }

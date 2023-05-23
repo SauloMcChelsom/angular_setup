@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common'
 import { NgModule } from '@angular/core'
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppStoreEffects } from './services/store/index.effects';
 import { appReducer } from './services/store/index.reducers'
@@ -16,6 +17,7 @@ import { ListComponent } from './components/list/list.component'
 import { CreateComponent } from './components/create/create.component'
 import { EditComponent } from './components/edit/edit.component'
 import { DetailComponent } from './components/detail/detail.component'
+import { FilterComponent } from './components/filter/filter.component'
 
 import { FeedComponent } from './feed.component'
 import { FeedRoutingModule } from './feed-routing.module';
@@ -25,13 +27,16 @@ const Components = [
   ListComponent,
   CreateComponent,
   EditComponent,
-  DetailComponent
+  DetailComponent,
+  FilterComponent
 ]
 
 const Modules = [
   AngularMaterialModule,
   FeedRoutingModule,
-  SkeletonModule
+  SkeletonModule,
+  FormsModule, 
+  ReactiveFormsModule
 ]
 
 @NgModule({

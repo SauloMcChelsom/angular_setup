@@ -25,7 +25,7 @@ export class TodosStateService {
     map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))
   );
 
-  public filter$: Observable<Filter> = this.select((state) => state.filter);
+  public filter$: Observable<Filter> = this.select((state) => state == null  ? null :state.filter);
   
   public selectedTodo$: Observable<Todo> = this.select((state) => {
     if(state == null){
