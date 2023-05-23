@@ -6,8 +6,8 @@ import { Todo } from '../models/todo';
 import { Filter } from '../models/filter';
 import { map, shareReplay } from 'rxjs/operators';
 import { TodosApiService } from './api/todos-api.service';
-import * as bookSelectors from './store/index.selectors'
-import * as bookActions from './store/index.actions'
+import * as appSelectors from './store/index.selectors'
+import * as appActions from './store/index.actions'
 import { tap } from 'rxjs/operators';
 
 interface TodoState {
@@ -33,11 +33,11 @@ export class TodosStateService {
 
   private todosFiltered$: Observable<Todo[]>;
 
-  todosDone$: Observable<Todo[]> = this.store$.select(bookSelectors.getBooks).pipe(
+  todosDone$: Observable<Todo[]> = this.store$.select(appSelectors.getApps).pipe(
     map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))
   );
 
-  todosNotDone$: Observable<Todo[]> = this.store$.select(bookSelectors.getBooks).pipe(
+  todosNotDone$: Observable<Todo[]> = this.store$.select(appSelectors.getApps).pipe(
     map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))
   );
 
@@ -70,7 +70,7 @@ export class TodosStateService {
   }
 
   load() {
-    this.store$.dispatch(bookActions.loadBookAllAction())
+    this.store$.dispatch(appActions.loadAppAllAction())
   }
 
   create(todo: Todo) {

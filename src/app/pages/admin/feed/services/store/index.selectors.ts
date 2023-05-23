@@ -2,31 +2,31 @@ import { createSelector } from '@ngrx/store'
 import { Todo } from '../../models/todo';
 import { AppState } from '../../models/app-state';
 
-const BookFeature = (state: any) => {
-  return state.feedStoreVersion//StoreModule.forFeature('feedStoreVersion', bookReducer),
+const AppFeature = (state: any) => {
+  return state.feedStoreVersion//StoreModule.forFeature('feedStoreVersion', appReducer),
 }
 
-export const getBook = createSelector(
-  BookFeature,
+export const getApp = createSelector(
+  AppFeature,
   (state: AppState, id: number) =>  <Todo[]>state.item.filter(x=> x.id === id)
 )
 
-export const getBooks = createSelector(
-  BookFeature,
+export const getApps = createSelector(
+  AppFeature,
   (state: AppState) => <any>state.selected
 )
 
-export const getSelectedBook = createSelector(
-  BookFeature,
+export const getSelectedApp = createSelector(
+  AppFeature,
   (state: AppState) => state.selected
 )
   
-export const getBookError = createSelector(
-  BookFeature,
+export const getAppError = createSelector(
+  AppFeature,
   (state: AppState) => state.error
 )
   
-export const getBookIsLoading = createSelector(
-  BookFeature,
+export const getAppIsLoading = createSelector(
+  AppFeature,
   (state: AppState) => state.isLoading
 )

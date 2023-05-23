@@ -1,82 +1,82 @@
 import { createReducer, on } from '@ngrx/store';
-import * as BookActionTypes from './index.actions';
+import * as AppActionTypes from './index.actions';
 import { initialState } from '../../models/app-state';
 
-export const bookReducer = createReducer(
+export const appReducer = createReducer(
   initialState,
 
-  on(BookActionTypes.loadBookAllAction, (state, {}) => ({
+  on(AppActionTypes.loadAppAllAction, (state, {}) => ({
     ...state,
     isLoading: true,
   })),
   
-  on(BookActionTypes.loadBookRequestAction, (state, {id}) => ({
+  on(AppActionTypes.loadAppRequestAction, (state, {id}) => ({
     ...state,
     isLoading: true 
   })),
  
-  on(BookActionTypes.loadBookSuccessAction, (state, { item }) => ({
+  on(AppActionTypes.loadAppSuccessAction, (state, { item }) => ({
       ...state,
       isLoading: false,
       selected: item
   })),
  
-  on(BookActionTypes.loadBookFailureAction, (state, { error }) => ({
+  on(AppActionTypes.loadAppFailureAction, (state, { error }) => ({
     ...state,
     isLoading: false,
     error: error
   })),
  
-  on(BookActionTypes.saveRequestAction, state => ({
+  on(AppActionTypes.saveRequestAction, state => ({
     ...state,
     isLoading: true 
   })),
  
-  on(BookActionTypes.saveSuccessAction, (state, { item }) => ({
+  on(AppActionTypes.saveSuccessAction, (state, { item }) => ({
     ...state,
     isLoading: false,
     selected: item,
     error: null
   })),
  
-  on(BookActionTypes.saveFailureAction, (state, { error }) => ({
+  on(AppActionTypes.saveFailureAction, (state, { error }) => ({
     ...state,
     isLoading: false,
     error: error
   })),
  
-  on(BookActionTypes.updateRequestAction, state => ({
+  on(AppActionTypes.updateRequestAction, state => ({
     ...state,
     isLoading: true 
   })),
  
-  on(BookActionTypes.updateSuccessAction, (state, { item }) => ({
+  on(AppActionTypes.updateSuccessAction, (state, { item }) => ({
     ...state,
     isLoading: false,
     selected: item,
     error: null
   })),
  
-  on(BookActionTypes.updateFailureAction, (state, { error }) => ({
+  on(AppActionTypes.updateFailureAction, (state, { error }) => ({
     ...state,
     isLoading: false,
     error: error
   })), 
  
-  on(BookActionTypes.deleteRequestAction, state => ({
+  on(AppActionTypes.deleteRequestAction, state => ({
     ...state,
     isLoading: true 
   })),
  
-  on(BookActionTypes.deleteSuccessAction, (state, { item }) => ({
+  on(AppActionTypes.deleteSuccessAction, (state, { item }) => ({
     ...state,
     isLoading: false,
     selected: item,
     error: null
-    //body: state.books.filter(x => x.id != id)
+    //body: state.apps.filter(x => x.id != id)
   })),
  
-  on(BookActionTypes.deleteFailureAction, (state, { error }) => ({
+  on(AppActionTypes.deleteFailureAction, (state, { error }) => ({
     ...state,
     isLoading: false,
     error: error

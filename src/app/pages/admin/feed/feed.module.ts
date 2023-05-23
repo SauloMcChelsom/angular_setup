@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core'
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
-import { BookStoreEffects } from './services/store/index.effects';
-import { bookReducer } from './services/store/index.reducers'
+import { AppStoreEffects } from './services/store/index.effects';
+import { appReducer } from './services/store/index.reducers'
 import { TodosApiService } from './services/api/todos-api.service'
 import { TodosStateService } from './services/todos-state.service'
 
@@ -41,8 +41,8 @@ const Modules = [
   imports: [
     CommonModule,
     ...Modules,
-    StoreModule.forFeature('feedStoreVersion', bookReducer),
-    EffectsModule.forFeature([BookStoreEffects])
+    StoreModule.forFeature('feedStoreVersion', appReducer),
+    EffectsModule.forFeature([AppStoreEffects])
   ],
   providers: [TodosApiService, TodosStateService],
   bootstrap: [],

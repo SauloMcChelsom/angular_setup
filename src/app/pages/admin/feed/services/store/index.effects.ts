@@ -3,10 +3,10 @@ import { Actions, ofType, createEffect } from '@ngrx/effects';
 import { of as observableOf } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { TodosApiService } from '../api/todos-api.service';
-import * as bookActions from './index.actions';
+import * as appActions from './index.actions';
  
 @Injectable()
-export class BookStoreEffects {
+export class AppStoreEffects {
   constructor(
     private dataService: TodosApiService, 
     private actions$: Actions
@@ -14,46 +14,46 @@ export class BookStoreEffects {
 
   private parameters:any = null
 
-  loadBookAllRequestEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(bookActions.loadBookAllAction),
+  loadAppAllRequestEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(appActions.loadAppAllAction),
     switchMap(action => {
       return this.dataService.getTodos().pipe(
-        tap((item)=>console.log("getTodos--> ", item)),
+        //tap((item)=>console.log("getTodos--> ", item)),
         map((item: any) => {
-            return bookActions.loadBookSuccessAction({ item })
+            return appActions.loadAppSuccessAction({ item })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookFailureAction({ error }))
+          return observableOf(appActions.loadAppFailureAction({ error }))
         })
       )
     })
   ))
 
-  loadBookByUserIdRequestEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(bookActions.loadBookRequestAction),
+  loadAppByUserIdRequestEffect$ = createEffect(() => this.actions$.pipe(
+    ofType(appActions.loadAppRequestAction),
       switchMap(action => {
         return this.dataService.getTodoById(action.id).pipe(
           tap((item)=>console.log("getTodoById--> ", item)),
           map((item: any) => {
-              return bookActions.loadBookSuccessAction({ item })
+              return appActions.loadAppSuccessAction({ item })
           }),
           catchError((error: any) => {
-            return observableOf(bookActions.loadBookFailureAction({ error }))
+            return observableOf(appActions.loadAppFailureAction({ error }))
           })
         )
       })
   ))
  
   saveRequestEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(bookActions.saveRequestAction),
+    ofType(appActions.saveRequestAction),
     switchMap(action => {
       this.parameters = action.item
       return this.dataService.createTodo(action.item).pipe(
         map((item: any) => {
-            return bookActions.saveSuccessAction({ item })
+            return appActions.saveSuccessAction({ item })
         }),
         catchError(error => {
-          return observableOf(bookActions.saveFailureAction({ error }))
+          return observableOf(appActions.saveFailureAction({ error }))
         })
       )
     }),
@@ -61,25 +61,25 @@ export class BookStoreEffects {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
         map((item: any) => {
             this.parameters = 'NEW_INPUT'
-            return bookActions.loadBookSuccessAction({ item })
+            return appActions.loadAppSuccessAction({ item })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookFailureAction({ error }))
+          return observableOf(appActions.loadAppFailureAction({ error }))
         })
       )
     })
   ))
  
   updateRequestEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(bookActions.updateRequestAction),
+    ofType(appActions.updateRequestAction),
     switchMap(action => {
       this.parameters = action.item
       return this.dataService.updateTodo(action.item).pipe(
         map((item: any) => {
-            return bookActions.updateSuccessAction({ item })
+            return appActions.updateSuccessAction({ item })
         }),
         catchError(error => {
-          return observableOf(bookActions.updateFailureAction({ error }))
+          return observableOf(appActions.updateFailureAction({ error }))
         })
       )
     }),
@@ -87,35 +87,35 @@ export class BookStoreEffects {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
         map((item: any) => {
           console.log(item)
-            return bookActions.loadBookSuccessAction({ item })
+            return appActions.loadAppSuccessAction({ item })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookFailureAction({ error }))
+          return observableOf(appActions.loadAppFailureAction({ error }))
         })
       )
     })
   ))
  
   deleteRequestEffect$ = createEffect(() => this.actions$.pipe(
-    ofType(bookActions.deleteRequestAction),
+    ofType(appActions.deleteRequestAction),
     switchMap(action => {
       this.parameters = action.item
       return this.dataService.deleteTodo(action.item).pipe(
         map((item: any) => {
-           return bookActions.deleteSuccessAction({ item })
+           return appActions.deleteSuccessAction({ item })
         }),
         catchError(error => {
-          return observableOf(bookActions.deleteFailureAction({ error }))
+          return observableOf(appActions.deleteFailureAction({ error }))
         })
       )
     }),
     switchMap(action => {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
         map((item: any) => {
-            return bookActions.loadBookSuccessAction({ item })
+            return appActions.loadAppSuccessAction({ item })
         }),
         catchError((error: any) => {
-          return observableOf(bookActions.loadBookFailureAction({ error }))
+          return observableOf(appActions.loadAppFailureAction({ error }))
         })
       )
     })

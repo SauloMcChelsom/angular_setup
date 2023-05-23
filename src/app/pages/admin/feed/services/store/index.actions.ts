@@ -3,39 +3,39 @@ import { Todo } from '../../models/todo';
 import { errors } from '../../models/erros';
 
 export enum ActionTypes {
-  LOAD_BOOK_ALL = '[Book] Load Book All',
-  LOAD_BOOK_REQUEST = '[Book] Load Book Request',
-  LOAD_BOOK_FAILURE = '[Book] Load Book Failure',
-  LOAD_BOOK_SUCCESS = '[Book] Load Book Success',
+  LOAD_BOOK_ALL = '[App] Load App All',
+  LOAD_BOOK_REQUEST = '[App] Load App Request',
+  LOAD_BOOK_FAILURE = '[App] Load App Failure',
+  LOAD_BOOK_SUCCESS = '[App] Load App Success',
  
-  SAVE_REQUEST = '[Book] Save',
-  SAVE_FAILURE = '[Book] Save Failure',
-  SAVE_SUCCESS = '[Book] Save Success',
+  SAVE_REQUEST = '[App] Save',
+  SAVE_FAILURE = '[App] Save Failure',
+  SAVE_SUCCESS = '[App] Save Success',
 
-  UPDATE_REQUEST = '[Book] Update',
-  UPDATE_FAILURE = '[Book] Update Failure',
-  UPDATE_SUCCESS = '[Book] Update Success',
+  UPDATE_REQUEST = '[App] Update',
+  UPDATE_FAILURE = '[App] Update Failure',
+  UPDATE_SUCCESS = '[App] Update Success',
  
-  DELETE_REQUEST = '[Book] Delete',
-  DELETE_FAILURE = '[Book] Delete Failure',
-  DELETE_SUCCESS = '[Book] Delete Success'
+  DELETE_REQUEST = '[App] Delete',
+  DELETE_FAILURE = '[App] Delete Failure',
+  DELETE_SUCCESS = '[App] Delete Success'
 }
 
-export const loadBookAllAction = createAction(
+export const loadAppAllAction = createAction(
   ActionTypes.LOAD_BOOK_ALL,
 );
 
-export const loadBookRequestAction = createAction(
+export const loadAppRequestAction = createAction(
   ActionTypes.LOAD_BOOK_REQUEST,
   props<{ id: number }>()
 );
   
-export const loadBookSuccessAction = createAction(
+export const loadAppSuccessAction = createAction(
   ActionTypes.LOAD_BOOK_SUCCESS,
   props<{ item: Todo }>()
 );
   
-export const loadBookFailureAction = createAction(
+export const loadAppFailureAction = createAction(
   ActionTypes.LOAD_BOOK_FAILURE,
   props<{ error: errors }>()
 );
