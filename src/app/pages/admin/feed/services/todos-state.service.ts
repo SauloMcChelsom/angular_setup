@@ -68,13 +68,8 @@ export class TodosStateService {
 
   }
 
-  // API BACK END
   load() {
     this.store$.dispatch(bookActions.loadBookAllAction())
-
-    this.store$.select(bookSelectors.getBooks).subscribe((r)=>{
-      console.log('select -> ',r)
-    })
   }
 
   create(todo: Todo) {

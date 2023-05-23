@@ -18,9 +18,9 @@ export class BookStoreEffects {
     ofType(bookActions.loadBookAllAction),
     switchMap(action => {
       return this.dataService.getTodos().pipe(
-        tap((book)=>console.log("getTodos--> ", book)),
-        map((book: any) => {
-            return bookActions.loadBookSuccessAction({ book })
+        tap((item)=>console.log("getTodos--> ", item)),
+        map((item: any) => {
+            return bookActions.loadBookSuccessAction({ item })
         }),
         catchError((error: any) => {
           return observableOf(bookActions.loadBookFailureAction({ error }))
@@ -33,9 +33,9 @@ export class BookStoreEffects {
     ofType(bookActions.loadBookRequestAction),
       switchMap(action => {
         return this.dataService.getTodoById(action.id).pipe(
-          tap((book)=>console.log("getTodoById--> ", book)),
-          map((book: any) => {
-              return bookActions.loadBookSuccessAction({ book })
+          tap((item)=>console.log("getTodoById--> ", item)),
+          map((item: any) => {
+              return bookActions.loadBookSuccessAction({ item })
           }),
           catchError((error: any) => {
             return observableOf(bookActions.loadBookFailureAction({ error }))
@@ -59,9 +59,9 @@ export class BookStoreEffects {
     }),
     switchMap(action => {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
-        map((book: any) => {
+        map((item: any) => {
             this.parameters = 'NEW_INPUT'
-            return bookActions.loadBookSuccessAction({ book })
+            return bookActions.loadBookSuccessAction({ item })
         }),
         catchError((error: any) => {
           return observableOf(bookActions.loadBookFailureAction({ error }))
@@ -85,9 +85,9 @@ export class BookStoreEffects {
     }),
     switchMap(action => {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
-        map((book: any) => {
-          console.log(book)
-            return bookActions.loadBookSuccessAction({ book })
+        map((item: any) => {
+          console.log(item)
+            return bookActions.loadBookSuccessAction({ item })
         }),
         catchError((error: any) => {
           return observableOf(bookActions.loadBookFailureAction({ error }))
@@ -111,8 +111,8 @@ export class BookStoreEffects {
     }),
     switchMap(action => {
       return this.dataService.getTodoById(this.parameters.user_id).pipe(
-        map((book: any) => {
-            return bookActions.loadBookSuccessAction({ book })
+        map((item: any) => {
+            return bookActions.loadBookSuccessAction({ item })
         }),
         catchError((error: any) => {
           return observableOf(bookActions.loadBookFailureAction({ error }))

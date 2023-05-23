@@ -32,7 +32,7 @@ export const loadBookRequestAction = createAction(
   
 export const loadBookSuccessAction = createAction(
   ActionTypes.LOAD_BOOK_SUCCESS,
-  props<{ book: Todo }>()
+  props<{ item: Todo }>()
 );
   
 export const loadBookFailureAction = createAction(

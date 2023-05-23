@@ -8,7 +8,7 @@ const BookFeature = (state: any) => {
 
 export const getBook = createSelector(
   BookFeature,
-  (state: AppState, id: number) =>  <Todo[]>state.body.filter(x=> x.id === id)
+  (state: AppState, id: number) =>  <Todo[]>state.item.filter(x=> x.id === id)
 )
 
 export const getBooks = createSelector(

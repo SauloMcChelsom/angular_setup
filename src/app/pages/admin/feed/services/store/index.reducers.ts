@@ -15,10 +15,10 @@ export const bookReducer = createReducer(
     isLoading: true 
   })),
  
-  on(BookActionTypes.loadBookSuccessAction, (state, { book }) => ({
+  on(BookActionTypes.loadBookSuccessAction, (state, { item }) => ({
       ...state,
       isLoading: false,
-      selected: book
+      selected: item
   })),
  
   on(BookActionTypes.loadBookFailureAction, (state, { error }) => ({

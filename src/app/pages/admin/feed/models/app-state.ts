@@ -3,14 +3,14 @@ import { Todo } from './todo';
 
 export interface AppState {
   selected: Todo
-  body: Array<Todo>;
+  item: Array<Todo>;
   isLoading?: boolean
   error?: errors
 }
 
 export const initialState: AppState = {
 	selected: null,
-	body: null,  
+	item: null,  
 	isLoading: false,
 	error: null
 }
