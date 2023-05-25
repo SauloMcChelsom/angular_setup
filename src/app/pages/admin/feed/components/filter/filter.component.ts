@@ -25,6 +25,7 @@ export class FilterComponent implements OnInit, OnDestroy {
 
   @Input()
   set filter(filter: Filter) {
+    //console.log(filter)
     this.formGroup.setValue(filter, { emitEvent: false });
   }
 
@@ -53,7 +54,7 @@ export class FilterComponent implements OnInit, OnDestroy {
     });
 
     this.formGroup.get('category').valueChanges.pipe(takeUntil(this.unsubscribe$)).subscribe((value) => {
-        let category_value = { isBusiness:false, isPrivate:false}
+      let category_value = { isBusiness:false, isPrivate:false}
         if(value == 'isBusiness'){
           category_value =  { isBusiness:true, isPrivate:false}
         } if (value == 'isPrivate'){

@@ -8,9 +8,25 @@ const AppFeature = (state: any) => {
 
 export const getApp = createSelector(
   AppFeature,
-  (state: AppState, id: number) =>  <Todo[]>state.item.filter(x=> x.id === id)
+  (state: AppState, id: number) =>  <Todo[]>state.items.filter(x=> x.id === id)
 )
 
+export const getAppIsPrivate = createSelector(
+  AppFeature,
+  (state: AppState, isPrivate: boolean) => {
+    let sss:any = state.selected ?? []
+    return sss.filter(x=> x.isPrivate === isPrivate) 
+  }
+)
+
+export const getAppIsBusiness = createSelector(
+  AppFeature,
+  (state: AppState, isBusiness: boolean) => {
+    let sss:any = state.selected ?? []
+    console.log(state)
+    return sss.filter(x=> x.isBusiness === isBusiness) 
+  }
+)
 export const getApps = createSelector(
   AppFeature,
   (state: AppState) => <any>state.selected

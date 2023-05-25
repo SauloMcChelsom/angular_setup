@@ -1,29 +1,20 @@
 import { errors } from './erros';
+import { Filter } from './filter';
 import { Todo } from './todo';
 
 export interface AppState {
   selected: Todo
-  item: Array<Todo>;
+  items: Todo[];
   isLoading?: boolean
   error?: errors
+  filter: Filter;
 }
 
 export const initialState: AppState = {
 	selected: null,
-	item: null,  
+	items: null,  
 	isLoading: false,
-	error: null
-}
-
-interface TodoState {
-  todos: Todo[];
-  selectedTodoId: number;
-  filter: any;
-}
-
-const initialStates: TodoState = {
-  todos: [],
-  selectedTodoId: undefined,
+	error: null,
   filter: {
     search: '',
     category: {
@@ -31,4 +22,4 @@ const initialStates: TodoState = {
       isPrivate: false,
     },
   },
-};
+}

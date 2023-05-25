@@ -37,3 +37,6 @@ ng g m pages/admin/course --routing
 ng g c pages/admin/course
 ng g s pages/admin/course
 ng g i pages/admin/course
+
+
+https://blog.logrocket.com/angular-state-management-made-simple-with-ngrx/
