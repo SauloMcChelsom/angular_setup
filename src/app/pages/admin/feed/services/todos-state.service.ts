@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store'
-import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { map, shareReplay, distinctUntilChanged } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 import { Todo } from '../models/todo';
 import { Filter } from '../models/filter';
@@ -26,6 +26,10 @@ export class TodosStateService {
   private todosFiltered$: Observable<Todo[]> = this.select((state) => {
     return getTodosFiltered(state.todos, state.filter);
   });
+
+  public state$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
+
+  public state2$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
 
   public todosDone$: Observable<Todo[]> = this.store$.select(appSelectors.getApps).pipe(
     map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))
@@ -66,6 +70,22 @@ export class TodosStateService {
 
   constructor(private store$: Store<any>) {
     this.load();
+
+    this.store$.select(appSelectors.getApps).pipe(
+      map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))
+    ).subscribe(r=>this.state$.next(r))
+
+    this.store$.select(appSelectors.getApps).pipe(
+      map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))
+    ).subscribe(r=>this.state2$.next(r))
+  }
+
+  setUser(user: Todo[]): void {
+    this.state$.next(user);
+  }
+
+  getUser(): Observable<Todo[]> {
+    return this.state$.asObservable();
   }
 
   public selectTodo(todo: Todo) {}
@@ -76,15 +96,19 @@ export class TodosStateService {
 
   public updateFilter(filter: Filter) {
     console.log(filter)
+    this.state$.next([])
+    this.state2$.next([])
     if(filter.category.isPrivate){
       this.store$.select(appSelectors.getAppIsPrivate, true).subscribe((r:Todo[])=>{
         console.log('isPrivate ==> ', r)
+        this.state$.next(r)
       })
     }
 
     if(filter.category.isBusiness){
       this.store$.select(appSelectors.getAppIsBusiness, true).subscribe((r:Todo[])=>{
         console.log('isBusiness ==> ', r)
+        this.state2$.next(r)
       })
     }
   }

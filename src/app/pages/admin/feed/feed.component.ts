@@ -12,8 +12,8 @@ import { Filter } from './models/filter';
 export class FeedComponent implements OnInit {
 
   public filter$: Observable<Filter> = this.todosState.filter$;
-  public todosDone$: Observable<Todo[]> = this.todosState.todosDone$;
-  public todosNotDone$: Observable<Todo[]> = this.todosState.todosNotDone$;
+  public todosDone$: Observable<Todo[]> = this.todosState.state$;
+  public todosNotDone$: Observable<Todo[]> = this.todosState.state2$;
   public selectedTodo$: Observable<Todo> = this.todosState.selectedTodo$;
   public load$:boolean = false
 
