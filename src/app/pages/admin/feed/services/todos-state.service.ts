@@ -95,21 +95,38 @@ export class TodosStateService {
   public clearSelectedTodo() {}
 
   public updateFilter(filter: Filter) {
-    console.log(filter)
     this.state$.next([])
     this.state2$.next([])
-    if(filter.category.isPrivate){
-      this.store$.select(appSelectors.getAppIsPrivate, true).subscribe((r:Todo[])=>{
-        console.log('isPrivate ==> ', r)
+
+    let Private$ = this.store$.select(appSelectors.getAppIsPrivate, true)
+    let Business$ = this.store$.select(appSelectors.getAppIsBusiness, true)
+
+    if(filter.category.isPrivate && filter.category.isBusiness == false){
+      Private$.pipe(map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))).subscribe((r:Todo[])=>{
         this.state$.next(r)
-      })
+      }).unsubscribe()
+      Private$.pipe(map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))).subscribe((r:Todo[])=>{
+        this.state2$.next(r)
+      }).unsubscribe()
     }
 
-    if(filter.category.isBusiness){
-      this.store$.select(appSelectors.getAppIsBusiness, true).subscribe((r:Todo[])=>{
-        console.log('isBusiness ==> ', r)
+    if(filter.category.isBusiness && filter.category.isPrivate == false){
+      Business$.pipe(map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))).subscribe((r:Todo[])=>{
+        this.state$.next(r)
+      }).unsubscribe()
+      Business$.pipe(map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))).subscribe((r:Todo[])=>{
         this.state2$.next(r)
-      })
+      }).unsubscribe()
+    }
+
+    if(filter.category.isBusiness == false && filter.category.isPrivate == false){
+      this.store$.select(appSelectors.getApps).pipe(map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))).subscribe((r:Todo[])=>{
+        this.state$.next(r)
+      }).unsubscribe()
+
+      this.store$.select(appSelectors.getApps).pipe(map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))).subscribe((r:Todo[])=>{
+        this.state2$.next(r)
+      }).unsubscribe()
     }
   }
 
