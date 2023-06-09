@@ -21,6 +21,7 @@ import { FilterComponent } from './components/filter/filter.component'
 
 import { FeedComponent } from './feed.component'
 import { FeedRoutingModule } from './feed-routing.module';
+import { FeedFormComponent } from './components/create/form/form.component';
 
 const Components = [
   FeedComponent,
@@ -28,7 +29,8 @@ const Components = [
   CreateComponent,
   EditComponent,
   DetailComponent,
-  FilterComponent
+  FilterComponent,
+  FeedFormComponent
 ]
 
 const Modules = [

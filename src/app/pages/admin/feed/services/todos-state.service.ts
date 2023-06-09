@@ -9,6 +9,7 @@ import { Filter } from '../models/filter';
 import * as appSelectors from './store/index.selectors'
 import * as appActions from './store/index.actions'
 import { AppState, initialState } from '../models/app-state';
+import { TodosApiService } from './api/todos-api.service';
 
 @Injectable()
 export class TodosStateService {
@@ -68,7 +69,7 @@ export class TodosStateService {
     );
   }
 
-  constructor(private store$: Store<any>) {
+  constructor(private store$: Store<any>, private apiService: TodosApiService) {
     this.load();
 
     this.store$.select(appSelectors.getApps).pipe(
@@ -130,7 +131,9 @@ export class TodosStateService {
     }
   }
 
-  public create(todo: Todo) {}
+  public create(todo: Todo) { 
+    this.store$.dispatch(appActions.saveRequestAction({item: todo}))
+  }
 
   public update(todo: Todo) {}
 

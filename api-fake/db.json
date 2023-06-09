@@ -4,32 +4,71 @@
       "id": 1,
       "title": "Saulo",
       "isDone": false,
-      "isPrivate": true,
-      "isBusiness": true
-    },
-    {
-      "id": 2,
-      "title": "Maelly",
-      "isDone": false,
-      "isPrivate": true
-    },
-    {
-      "id": 3,
-      "title": "Greorne",
-      "isDone": true,
+      "isPrivate": false,
       "isBusiness": false
     },
     {
-      "title": "davi",
+      "title": "mel",
       "isDone": true,
-      "isPrivate": true,
+      "isBusiness": null,
+      "isPrivate": null,
+      "id": 2
+    },
+    {
+      "title": "carol",
+      "isDone": null,
+      "isBusiness": null,
+      "isPrivate": null,
+      "id": 3
+    },
+    {
+      "title": "may",
+      "isDone": null,
+      "isBusiness": null,
+      "isPrivate": null,
       "id": 4
     },
     {
-      "title": "green",
-      "isDone": true,
-      "isPrivate": false,
+      "title": "geb",
+      "isDone": null,
+      "isBusiness": null,
+      "isPrivate": null,
       "id": 5
+    },
+    {
+      "title": "kaik",
+      "isDone": true,
+      "isBusiness": false,
+      "isPrivate": true,
+      "id": 6
+    },
+    {
+      "title": "lol",
+      "isDone": null,
+      "isBusiness": null,
+      "isPrivate": null,
+      "id": 7
+    },
+    {
+      "title": "kan",
+      "isDone": null,
+      "isBusiness": null,
+      "isPrivate": null,
+      "id": 8
+    },
+    {
+      "title": "may",
+      "isDone": true,
+      "isBusiness": true,
+      "isPrivate": false,
+      "id": 9
+    },
+    {
+      "title": "kio",
+      "isDone": true,
+      "isBusiness": null,
+      "isPrivate": null,
+      "id": 10
     }
   ],
   "posts": [

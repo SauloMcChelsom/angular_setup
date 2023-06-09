@@ -4,6 +4,7 @@ import { errors } from '../../models/erros';
 
 export enum ActionTypes {
   LOAD_BOOK_ALL = '[App] Load App All',
+  
   LOAD_BOOK_REQUEST = '[App] Load App Request',
   LOAD_BOOK_FAILURE = '[App] Load App Failure',
   LOAD_BOOK_SUCCESS = '[App] Load App Success',
@@ -55,7 +56,6 @@ export const saveSuccessAction = createAction(
   props<{ item: Todo }>()
 );
   
-
 export const updateRequestAction = createAction(
   ActionTypes.UPDATE_REQUEST,
   props<{ item: Todo }>()

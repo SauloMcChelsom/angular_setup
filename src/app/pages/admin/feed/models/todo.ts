@@ -1,7 +1,7 @@
 export class Todo {
   id: number;
   title: string;
-  isDone: boolean;
+  isDone?: boolean;
   isBusiness?: boolean;
   isPrivate?: boolean;
 }

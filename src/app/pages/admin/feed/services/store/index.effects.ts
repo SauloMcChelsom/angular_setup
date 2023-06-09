@@ -12,8 +12,6 @@ export class AppStoreEffects {
     private actions$: Actions
   ) {}
 
-  private parameters:any = null
-
   loadAppAllRequestEffect$ = createEffect(() => this.actions$.pipe(
     ofType(appActions.loadAppAllAction),
     switchMap(action => {
@@ -47,7 +45,6 @@ export class AppStoreEffects {
   saveRequestEffect$ = createEffect(() => this.actions$.pipe(
     ofType(appActions.saveRequestAction),
     switchMap(action => {
-      this.parameters = action.item
       return this.dataService.createTodo(action.item).pipe(
         map((item: any) => {
             return appActions.saveSuccessAction({ item })
@@ -56,24 +53,12 @@ export class AppStoreEffects {
           return observableOf(appActions.saveFailureAction({ error }))
         })
       )
-    }),
-    switchMap(action => {
-      return this.dataService.getTodoById(this.parameters.user_id).pipe(
-        map((item: any) => {
-            this.parameters = 'NEW_INPUT'
-            return appActions.loadAppSuccessAction({ item })
-        }),
-        catchError((error: any) => {
-          return observableOf(appActions.loadAppFailureAction({ error }))
-        })
-      )
     })
   ))
  
   updateRequestEffect$ = createEffect(() => this.actions$.pipe(
     ofType(appActions.updateRequestAction),
     switchMap(action => {
-      this.parameters = action.item
       return this.dataService.updateTodo(action.item).pipe(
         map((item: any) => {
             return appActions.updateSuccessAction({ item })
@@ -82,40 +67,18 @@ export class AppStoreEffects {
           return observableOf(appActions.updateFailureAction({ error }))
         })
       )
-    }),
-    switchMap(action => {
-      return this.dataService.getTodoById(this.parameters.user_id).pipe(
-        map((item: any) => {
-          console.log(item)
-            return appActions.loadAppSuccessAction({ item })
-        }),
-        catchError((error: any) => {
-          return observableOf(appActions.loadAppFailureAction({ error }))
-        })
-      )
     })
   ))
  
   deleteRequestEffect$ = createEffect(() => this.actions$.pipe(
     ofType(appActions.deleteRequestAction),
     switchMap(action => {
-      this.parameters = action.item
       return this.dataService.deleteTodo(action.item).pipe(
         map((item: any) => {
            return appActions.deleteSuccessAction({ item })
         }),
         catchError(error => {
           return observableOf(appActions.deleteFailureAction({ error }))
-        })
-      )
-    }),
-    switchMap(action => {
-      return this.dataService.getTodoById(this.parameters.user_id).pipe(
-        map((item: any) => {
-            return appActions.loadAppSuccessAction({ item })
-        }),
-        catchError((error: any) => {
-          return observableOf(appActions.loadAppFailureAction({ error }))
         })
       )
     })
