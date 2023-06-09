@@ -3,6 +3,7 @@ import { Todo } from '../../models/todo';
 import { errors } from '../../models/erros';
 
 export enum ActionTypes {
+
   LOAD_BOOK_ALL = '[App] Load App All',
   
   LOAD_BOOK_REQUEST = '[App] Load App Request',
@@ -21,6 +22,22 @@ export enum ActionTypes {
   DELETE_FAILURE = '[App] Delete Failure',
   DELETE_SUCCESS = '[App] Delete Success'
 }
+
+export const selectedRequestAction = createAction(
+  ActionTypes.LOAD_BOOK_REQUEST,
+  props<{ id: number }>()
+);
+  
+export const selectedSuccessAction = createAction(
+  ActionTypes.LOAD_BOOK_SUCCESS,
+  props<{ item: Todo }>()
+);
+  
+export const selectedFailureAction = createAction(
+  ActionTypes.LOAD_BOOK_FAILURE,
+  props<{ error: errors }>()
+);
+
 
 export const loadAppAllAction = createAction(
   ActionTypes.LOAD_BOOK_ALL,

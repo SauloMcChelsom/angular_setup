@@ -89,7 +89,10 @@ export class TodosStateService {
     return this.state$.asObservable();
   }
 
-  public selectTodo(todo: Todo) {}
+  public selectTodo(todo: Todo) {
+    this.store$.dispatch(appActions.selectedRequestAction({id : todo.id}))
+    this.store$.select(appActions.selectedSuccessAction).subscribe((r)=>{console.log(r)})
+  }
 
   public initNewTodo() {}
 

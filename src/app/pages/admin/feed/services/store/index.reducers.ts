@@ -4,6 +4,24 @@ import { initialState } from '../../models/app-state';
 
 export const appReducer = createReducer(
   initialState,
+  
+  on(AppActionTypes.selectedRequestAction, (state, {id}) => ({
+    ...state,
+    isLoading: true,
+    items:state.selected[0],
+  })),
+ 
+  on(AppActionTypes.selectedSuccessAction, (state, {}) => ({
+      ...state,
+      isLoading: false,
+  })),
+
+  on(AppActionTypes.selectedFailureAction, (state, { error }) => ({
+      ...state,
+      isLoading: false,
+      error: error
+  })),
+  /** */
 
   on(AppActionTypes.loadAppAllAction, (state, {}) => ({
     ...state,

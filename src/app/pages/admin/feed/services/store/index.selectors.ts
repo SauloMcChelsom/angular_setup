@@ -23,7 +23,6 @@ export const getAppIsBusiness = createSelector(
   AppFeature,
   (state: AppState, isBusiness: boolean) => {
     let sss:any = state.selected ?? []
-    console.log(state)
     return sss.filter(x=> x.isBusiness === isBusiness) 
   }
 )
