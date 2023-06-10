@@ -15,7 +15,7 @@ export class TodosApiService {
   }
 
   public getTodoById(id:number){
-    return this.http.get<any>(apiUrl + id)
+    return this.http.get<Todo>(apiUrl + id)
   } 
 
   public createTodo(todo: Todo): Observable<Todo> {

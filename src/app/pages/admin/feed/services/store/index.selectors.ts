@@ -26,6 +26,17 @@ export const getAppIsBusiness = createSelector(
     return sss.filter(x=> x.isBusiness === isBusiness) 
   }
 )
+
+export const Apps = createSelector(
+  AppFeature,
+  (state: AppState) => state
+)
+
+export const Items = createSelector(
+  AppFeature,
+  (state: AppState) => state.items
+)
+
 export const getApps = createSelector(
   AppFeature,
   (state: AppState) => <any>state.selected

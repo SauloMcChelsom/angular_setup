@@ -18,7 +18,7 @@ export class TodosStateService {
    * temos que realizar a trocar do select para fazer a buscar
    * o todosFiltered$ e o filtro uma malandragem kkkkk
    * ao inves de 
-   * public todosDone$: Observable<Todo[]> = this.store$.select(appSelectors.getApps)
+   * public todosDone$: Observable<Todo[]> = this.store$.select(appSelectors.Items)
    * public todosDone$: Observable<Todo[]> = this.todosFiltered$
    * 
    * temos que criar uma logica de quamdo alterar o filtro alterar os controller do select
@@ -32,11 +32,11 @@ export class TodosStateService {
 
   public state2$: BehaviorSubject<Todo[]> = new BehaviorSubject<Todo[]>([]);
 
-  public todosDone$: Observable<Todo[]> = this.store$.select(appSelectors.getApps).pipe(
+  public todosDone$: Observable<Todo[]> = this.store$.select(appSelectors.Items).pipe(
     map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))
   );
 
-  public todosNotDone$: Observable<Todo[]> = this.store$.select(appSelectors.getApps).pipe(
+  public todosNotDone$: Observable<Todo[]> = this.store$.select(appSelectors.Items).pipe(
     map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))
   );
 
@@ -55,7 +55,7 @@ export class TodosStateService {
   );
 
   protected select2(mapFn: (state: any) => any): Observable<any> {
-    return this.store$.select(appSelectors.getApps).pipe(
+    return this.store$.select(appSelectors.Items).pipe(
       //tap((r: any) => console.log(r)),
       map((state: any) => mapFn(state)),
       distinctUntilChanged()
@@ -63,7 +63,7 @@ export class TodosStateService {
   }
 
   protected select(mapFn: (state: any) => any): Observable<any> {
-    return this.store$.select(appSelectors.getApps).pipe(
+    return this.store$.select(appSelectors.Items).pipe(
       map((state: any) => mapFn(state)),
       distinctUntilChanged()
     );
@@ -72,11 +72,11 @@ export class TodosStateService {
   constructor(private store$: Store<any>, private apiService: TodosApiService) {
     this.load();
 
-    this.store$.select(appSelectors.getApps).pipe(
+    this.store$.select(appSelectors.Items).pipe(
       map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))
     ).subscribe(r=>this.state$.next(r))
 
-    this.store$.select(appSelectors.getApps).pipe(
+    this.store$.select(appSelectors.Items).pipe(
       map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))
     ).subscribe(r=>this.state2$.next(r))
   }
@@ -124,11 +124,11 @@ export class TodosStateService {
     }
 
     if(filter.category.isBusiness == false && filter.category.isPrivate == false){
-      this.store$.select(appSelectors.getApps).pipe(map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))).subscribe((r:Todo[])=>{
+      this.store$.select(appSelectors.Items).pipe(map((todos) => todos == null  ? null : todos.filter((todo) => todo.isDone))).subscribe((r:Todo[])=>{
         this.state$.next(r)
       }).unsubscribe()
 
-      this.store$.select(appSelectors.getApps).pipe(map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))).subscribe((r:Todo[])=>{
+      this.store$.select(appSelectors.Items).pipe(map((todos) => todos == null  ? null : todos.filter((todo) => !todo.isDone))).subscribe((r:Todo[])=>{
         this.state2$.next(r)
       }).unsubscribe()
     }
@@ -144,6 +144,7 @@ export class TodosStateService {
 
   private load() {
     this.store$.dispatch(appActions.loadAppAllAction())
+    this.store$.select(appSelectors.Apps).subscribe((r)=>console.log(r))
   }
 }
 

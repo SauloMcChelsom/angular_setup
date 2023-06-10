@@ -8,7 +8,7 @@ export const appReducer = createReducer(
   on(AppActionTypes.selectedRequestAction, (state, {id}) => ({
     ...state,
     isLoading: true,
-    items:state.selected[0],
+    selected: state.items.find(x => x.id == id),
   })),
  
   on(AppActionTypes.selectedSuccessAction, (state, {}) => ({
@@ -21,22 +21,35 @@ export const appReducer = createReducer(
       isLoading: false,
       error: error
   })),
+
+
+
+
+
   /** */
 
   on(AppActionTypes.loadAppAllAction, (state, {}) => ({
     ...state,
     isLoading: true,
   })),
+
+
+
+
+
+
+
   
   on(AppActionTypes.loadAppRequestAction, (state, {id}) => ({
     ...state,
-    isLoading: true 
+    isLoading: true,
+    selected: state.items.find(x => x.id == id)
   })),
  
   on(AppActionTypes.loadAppSuccessAction, (state, { item }) => ({
       ...state,
       isLoading: false,
-      selected: item
+      items: item
   })),
  
   on(AppActionTypes.loadAppFailureAction, (state, { error }) => ({
@@ -44,6 +57,12 @@ export const appReducer = createReducer(
     isLoading: false,
     error: error
   })),
+
+
+
+
+
+
  
   on(AppActionTypes.saveRequestAction, state => ({
     ...state,
@@ -54,7 +73,6 @@ export const appReducer = createReducer(
     ...state,
     isLoading: false,
     selected: item,
-    error: null
   })),
  
   on(AppActionTypes.saveFailureAction, (state, { error }) => ({
@@ -62,6 +80,15 @@ export const appReducer = createReducer(
     isLoading: false,
     error: error
   })),
+
+
+
+
+
+
+
+
+  
  
   on(AppActionTypes.updateRequestAction, state => ({
     ...state,

@@ -5,6 +5,8 @@ import { errors } from '../../models/erros';
 export enum ActionTypes {
 
   LOAD_BOOK_ALL = '[App] Load App All',
+
+  LOAD_BOOK_SELECTED = '[App] Load App Selected',
   
   LOAD_BOOK_REQUEST = '[App] Load App Request',
   LOAD_BOOK_FAILURE = '[App] Load App Failure',
@@ -24,7 +26,7 @@ export enum ActionTypes {
 }
 
 export const selectedRequestAction = createAction(
-  ActionTypes.LOAD_BOOK_REQUEST,
+  ActionTypes.LOAD_BOOK_SELECTED,
   props<{ id: number }>()
 );
   
@@ -50,7 +52,7 @@ export const loadAppRequestAction = createAction(
   
 export const loadAppSuccessAction = createAction(
   ActionTypes.LOAD_BOOK_SUCCESS,
-  props<{ item: Todo }>()
+  props<{ item: Todo[] }>()
 );
   
 export const loadAppFailureAction = createAction(
