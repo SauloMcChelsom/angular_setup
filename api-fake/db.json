@@ -2,17 +2,45 @@
   "todos": [
     {
       "id": 1,
-      "title": "Saulo",
+      "title": "Saulo silva",
       "isDone": false,
-      "isPrivate": false,
-      "isBusiness": false
+      "isBusiness": false,
+      "isPrivate": true
     },
     {
-      "title": "mel",
+      "title": "Gora",
+      "isDone": null,
+      "isBusiness": false,
+      "isPrivate": true,
+      "id": 4
+    },
+    {
+      "id": 5,
+      "title": "kakaroto",
       "isDone": true,
-      "isBusiness": null,
-      "isPrivate": null,
-      "id": 2
+      "isBusiness": false,
+      "isPrivate": true
+    },
+    {
+      "title": "Jay",
+      "isDone": true,
+      "isBusiness": false,
+      "isPrivate": true,
+      "id": 6
+    },
+    {
+      "title": "mario",
+      "isDone": null,
+      "isBusiness": true,
+      "isPrivate": false,
+      "id": 7
+    },
+    {
+      "title": "Liu",
+      "isDone": true,
+      "isBusiness": true,
+      "isPrivate": false,
+      "id": 8
     }
   ],
   "posts": [

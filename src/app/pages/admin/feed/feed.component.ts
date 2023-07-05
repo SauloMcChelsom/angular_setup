@@ -40,6 +40,7 @@ export class FeedComponent implements OnInit {
 
   selectTodo(todo: Todo) {
     this.todosState.selectTodo(todo);
+    setTimeout(()=>{this.router.navigate(['/admin/course/detail'])},200)
   }
 
   addTodo() {

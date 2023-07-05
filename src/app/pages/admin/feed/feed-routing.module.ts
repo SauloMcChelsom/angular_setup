@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CreateComponent } from './components/create/create.component';
 import { AuthGuard } from '@app/shared/guards/auth.guard';
-import { EditComponent } from './components/edit/edit.component';
 import { FeedComponent } from './feed.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 const routes: Routes = [
   {
@@ -17,8 +17,8 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'edit', 
-    component: EditComponent,
+    path: 'detail', 
+    component: DetailComponent,
     canActivate: [AuthGuard],
   }
 ];

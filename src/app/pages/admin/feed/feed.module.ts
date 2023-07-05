@@ -15,22 +15,22 @@ import { SkeletonModule } from '@app/shared/components/skeleton/skeleton.module'
 
 import { ListComponent } from './components/list/list.component'
 import { CreateComponent } from './components/create/create.component'
-import { EditComponent } from './components/edit/edit.component'
 import { DetailComponent } from './components/detail/detail.component'
 import { FilterComponent } from './components/filter/filter.component'
 
 import { FeedComponent } from './feed.component'
 import { FeedRoutingModule } from './feed-routing.module';
 import { FeedFormComponent } from './components/create/form/form.component';
+import { FeedFormDetailComponent } from './components/detail/form/form.component';
 
 const Components = [
   FeedComponent,
   ListComponent,
   CreateComponent,
-  EditComponent,
   DetailComponent,
   FilterComponent,
-  FeedFormComponent
+  FeedFormComponent,
+  FeedFormDetailComponent
 ]
 
 const Modules = [

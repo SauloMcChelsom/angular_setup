@@ -73,7 +73,9 @@ export class AppStoreEffects {
   deleteRequestEffect$ = createEffect(() => this.actions$.pipe(
     ofType(appActions.deleteRequestAction),
     switchMap(action => {
+       tap((action)=>console.log("deleteTodo--> ", action))
       return this.dataService.deleteTodo(action.item).pipe(
+        tap((item)=>console.log("deleteTodo--> ", item)),
         map((item: any) => {
            return appActions.deleteSuccessAction({ item })
         }),

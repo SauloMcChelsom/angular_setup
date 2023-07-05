@@ -40,3 +40,9 @@ ng g i pages/admin/course
 
 
 https://blog.logrocket.com/angular-state-management-made-simple-with-ngrx/
+
+
+- form create e detail em um so, duplicaçao de codigp
+- renomer BOOK por Apps ver em services/store/index.actions.ts
+- centralizar model em um so lugar ver em app-form-detail e app-form
+- index.selectors.ts refatoras nomes de seletores mas significativos

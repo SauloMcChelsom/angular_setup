@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Todo } from '../models/todo';
 import { Filter } from '../models/filter';
 import * as appSelectors from './store/index.selectors'
-import * as appActions from './store/index.actions'
+import * as appActions from '@app/pages/admin/feed/services/store/index.actions'
 import { AppState, initialState } from '../models/app-state';
 import { TodosApiService } from './api/todos-api.service';
 
@@ -91,7 +91,6 @@ export class TodosStateService {
 
   public selectTodo(todo: Todo) {
     this.store$.dispatch(appActions.selectedRequestAction({id : todo.id}))
-    this.store$.select(appActions.selectedSuccessAction).subscribe((r)=>{console.log(r)})
   }
 
   public initNewTodo() {}
@@ -138,9 +137,14 @@ export class TodosStateService {
     this.store$.dispatch(appActions.saveRequestAction({item: todo}))
   }
 
-  public update(todo: Todo) {}
+  public update(todo: Todo) {
+    this.store$.dispatch(appActions.updateRequestAction({item: todo}))
+  }
 
-  public delete(todo: Todo) {}
+  public delete(todo: Todo) {
+    console.log('delete -->', todo)
+    this.store$.dispatch(appActions.deleteRequestAction({item: todo}))
+  }
 
   private load() {
     this.store$.dispatch(appActions.loadAppAllAction())
