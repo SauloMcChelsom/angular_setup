@@ -6,6 +6,7 @@ import { AdminRouteModule } from './admin.route';
 import { HomeModule } from './home/home.module';
 import { SignOutModule } from './sign_out/sign_out.module';
 import { SettingsModule } from './settings/settings.module';
+import { TodoModule } from './my_todo/todo.module';
 
 @NgModule({
   imports: [     
@@ -16,6 +17,7 @@ import { SettingsModule } from './settings/settings.module';
     SignOutModule,
     SettingsModule,
     AdminRouteModule,
+    TodoModule
   ], 
   declarations: [],
   providers: [  ]

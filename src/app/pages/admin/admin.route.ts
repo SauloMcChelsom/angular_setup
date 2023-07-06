@@ -16,7 +16,7 @@ export const ROUTES: Routes = [
   },
   {
     path: 'todo',
-    loadChildren: () => import('./my_todo/todo.module').then(m => m.TodoModule),
+    loadChildren: () => import('./todo/todo.module').then(m => m.TodoModule),
   },
   {
     path: 'course',

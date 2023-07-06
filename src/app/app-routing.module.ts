@@ -31,6 +31,10 @@ export const ROUTES: Routes = [
     loadChildren: () => import('./pages/admin/admin.module').then(m => m.AdminModule),
   },
   {
+    path: 'todo',
+    loadChildren: () => import('./pages/admin/todo/todo.module').then(m => m.TodoModule),
+  },
+  {
     path: 'client',
     loadChildren: () => import('./pages/client/client.module').then(m => m.ClientModule),
   },
