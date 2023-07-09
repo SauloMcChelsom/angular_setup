@@ -1,5 +1,5 @@
 export interface CourseItem {
-  id: string;
-  department: string;
-  name: string;
+	id: string;
+	department: string;
+	name: string;
 }

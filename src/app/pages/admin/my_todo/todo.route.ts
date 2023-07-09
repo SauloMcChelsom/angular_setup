@@ -6,25 +6,25 @@ import { AuthGuard } from '@app/shared/guards/auth.guard';
 import { TodoDetailComponent } from './components/todo-detail/todo-detail.component';
 
 const routes: Routes = [
-  {
-    path: '', 
-    component: TodoShellComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'create', 
-    component: TodoDetailComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'edit', 
-    component: TodoDetailComponent,
-    canActivate: [AuthGuard],
-  }
+	{
+		path: '',
+		component: TodoShellComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: 'create',
+		component: TodoDetailComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: 'edit',
+		component: TodoDetailComponent,
+		canActivate: [AuthGuard],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class TodoRoute {}

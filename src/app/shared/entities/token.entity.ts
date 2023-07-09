@@ -2,9 +2,9 @@ export class TokenEntity {
 	private _access_token: String;
 	private _refresh_token: IRefresh;
 
-	constructor(token: IToken){
-		this.access_token = token.access_token
-		this.refresh_token = token.refresh_token
+	constructor(token: IToken) {
+		this.access_token = token.access_token;
+		this.refresh_token = token.refresh_token;
 	}
 
 	public get refresh_token(): IRefresh {
@@ -18,7 +18,7 @@ export class TokenEntity {
 	public get access_token(): String {
 		return this._access_token;
 	}
-	
+
 	public set access_token(value: String) {
 		this._access_token = value;
 	}
@@ -31,13 +31,13 @@ export class Refresh {
 	private timestamp: String;
 	private user_id: number;
 
-  constructor(token:IRefresh){
-	this.id = token.id
-	this.token = token.token
-	this.expires_in = token.expires_in
-	this.timestamp = token.timestamp
-	this.user_id = token.user_id
-  }
+	constructor(token: IRefresh) {
+		this.id = token.id;
+		this.token = token.token;
+		this.expires_in = token.expires_in;
+		this.timestamp = token.timestamp;
+		this.user_id = token.user_id;
+	}
 }
 
 export interface IRefresh {

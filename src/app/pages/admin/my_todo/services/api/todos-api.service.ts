@@ -6,24 +6,24 @@ import { Observable } from 'rxjs';
 const apiUrl = 'http://localhost:3000/todos/';
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class TodosApiService {
-  constructor(private http: HttpClient) {}
+	constructor(private http: HttpClient) {}
 
-  getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(apiUrl);
-  }
+	getTodos(): Observable<Todo[]> {
+		return this.http.get<Todo[]>(apiUrl);
+	}
 
-  createTodo(todo: Todo): Observable<Todo> {
-    return this.http.post<Todo>(apiUrl, todo);
-  }
+	createTodo(todo: Todo): Observable<Todo> {
+		return this.http.post<Todo>(apiUrl, todo);
+	}
 
-  updateTodo(todo: Todo): Observable<Todo> {
-    return this.http.put<Todo>(apiUrl + todo.id, todo);
-  }
+	updateTodo(todo: Todo): Observable<Todo> {
+		return this.http.put<Todo>(apiUrl + todo.id, todo);
+	}
 
-  deleteTodo(todo: Todo): Observable<void> {
-    return this.http.delete<void>(apiUrl + todo.id);
-  }
+	deleteTodo(todo: Todo): Observable<void> {
+		return this.http.delete<void>(apiUrl + todo.id);
+	}
 }

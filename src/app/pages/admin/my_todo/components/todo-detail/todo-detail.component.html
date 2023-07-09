@@ -1,45 +1,39 @@
 <div class="card h-100">
-    <div class="card-header">
-        <button (click)="onClose()" mat-icon-button aria-label="add new todo">
-            <mat-icon>west</mat-icon>
-        </button>
-        <span>{{ todo.id ? 'Edit Todo' : 'Create Todo' }}</span>
-    </div>
-    <div class="card-body">
-        <form #form="ngForm">
-            <div class="form-group">
-                <label>Title</label>
-                <mat-form-field  class="col-12" appearance="fill">
-                    <mat-label>Name*</mat-label>
-                    <input matInput placeholder="Name (required)" required name="title" [ngModel]="todo.title">
-                </mat-form-field>
-            </div>
-            <div class="form-group">
-                <label>Status</label>
-                <div class="custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" id="customSwitch1" [ngModel]="todo.isDone" name="isDone">
-                    <label class="custom-control-label" for="customSwitch1">Done</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="d-block">Categories</label>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="isPrivate" name="isPrivate" [ngModel]="todo.isPrivate">
-                    <label class="form-check-label text-primary" for="isPrivate">Private</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="isBusiness" name="isBusiness" [ngModel]="todo.isBusiness">
-                    <label class="form-check-label text-info" for="isBusiness">Business</label>
-                </div>
-            </div>
-            <button
-                class="btn btn-primary mr-2"
-                (click)="submit(form)"
-                [disabled]="!form.valid || !form.dirty"
-            >
-                Save
-            </button>
-            <button *ngIf="todo.id" class="btn btn-primary btn-danger" (click)="delete()">Delete</button>
-        </form>
-    </div>
+	<div class="card-header">
+		<button (click)="onClose()" mat-icon-button aria-label="add new todo">
+			<mat-icon>west</mat-icon>
+		</button>
+		<span>{{ todo.id ? 'Edit Todo' : 'Create Todo' }}</span>
+	</div>
+	<div class="card-body">
+		<form #form="ngForm">
+			<div class="form-group">
+				<label>Title</label>
+				<mat-form-field class="col-12" appearance="fill">
+					<mat-label>Name*</mat-label>
+					<input matInput placeholder="Name (required)" required name="title" [ngModel]="todo.title" />
+				</mat-form-field>
+			</div>
+			<div class="form-group">
+				<label>Status</label>
+				<div class="custom-control custom-switch">
+					<input type="checkbox" class="custom-control-input" id="customSwitch1" [ngModel]="todo.isDone" name="isDone" />
+					<label class="custom-control-label" for="customSwitch1">Done</label>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="d-block">Categories</label>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" id="isPrivate" name="isPrivate" [ngModel]="todo.isPrivate" />
+					<label class="form-check-label text-primary" for="isPrivate">Private</label>
+				</div>
+				<div class="form-check form-check-inline">
+					<input class="form-check-input" type="checkbox" id="isBusiness" name="isBusiness" [ngModel]="todo.isBusiness" />
+					<label class="form-check-label text-info" for="isBusiness">Business</label>
+				</div>
+			</div>
+			<button class="btn btn-primary mr-2" (click)="submit(form)" [disabled]="!form.valid || !form.dirty">Save</button>
+			<button *ngIf="todo.id" class="btn btn-primary btn-danger" (click)="delete()">Delete</button>
+		</form>
+	</div>
 </div>

@@ -1,13 +1,8 @@
 <div class="container">
-  <div class="row">
-    <menu-box class="col" titulo="Sign out" (click)="openDialog()">
-      <ng-container>
-        logout
-      </ng-container>
-    </menu-box>
-  </div>
+	<div class="row">
+		<menu-box class="col" titulo="Sign out" (click)="openDialog()">
+			<ng-container> logout </ng-container>
+		</menu-box>
+	</div>
 </div>
-<dialog-sign-out
-  mensagem="Do you really want to leave?"
-  (newItemEvent)="logoff($event)"
-></dialog-sign-out>
+<dialog-sign-out mensagem="Do you really want to leave?" (newItemEvent)="logoff($event)"></dialog-sign-out>

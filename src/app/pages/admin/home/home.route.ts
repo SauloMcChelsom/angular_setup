@@ -6,16 +6,15 @@ import { AuthGuard } from '@app/shared/guards/auth.guard';
 import { IsAdminGuard } from '@app/shared/guards/is_admin.guard';
 
 const routes: Routes = [
-  {
-    path: '', 
-    component: HomeComponent,
-    canActivate: [AuthGuard, IsAdminGuard],
-  }
+	{
+		path: '',
+		component: HomeComponent,
+		canActivate: [AuthGuard, IsAdminGuard],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
-
 export class HomeRoute {}

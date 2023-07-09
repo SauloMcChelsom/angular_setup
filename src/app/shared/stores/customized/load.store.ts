@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({ providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class LoadStore {
+	private readonly _loadStore = new BehaviorSubject<boolean>(true);
 
-  private readonly _loadStore = new BehaviorSubject<boolean>(true);
+	readonly load$ = this._loadStore.asObservable();
 
+	public get load(): boolean {
+		return this._loadStore.getValue();
+	}
 
-  readonly load$ = this._loadStore.asObservable();
-
-
-  public get load(): boolean {
-    return this._loadStore.getValue();
-  }
-
-  public set load(val: boolean) {
-    this._loadStore.next(val);
-  }
+	public set load(val: boolean) {
+		this._loadStore.next(val);
+	}
 }

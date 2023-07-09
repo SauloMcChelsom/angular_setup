@@ -1,35 +1,31 @@
 <div class="container">
-    <mat-card class="example-card">
-        <mat-card-header style="flex-direction: row-reverse;">
-            <div class="title">
-                <button (click)="back()" mat-icon-button color="primary" aria-label="add new todo" title="button back to main" data-message="button back to main">
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
-                <div class="card-title-text">
-                    Add new item
-                </div>
-            </div>
-        </mat-card-header>
-        <mat-card-content>
-            <app-form (filterUpdate)="onFilterUpdate($event)" ></app-form>
-        </mat-card-content>
-        <mat-card-actions>
-            <button
-               *ngIf="loading == false" 
-                mat-raised-button 
-                color="primary" 
-                class="col-12 p-2"
-                (click)="submit()"
-                [disabled]="!newTodo.title"
-            >
-                Salvar
-            </button>
-            <button *ngIf="loading == true" mat-raised-button color="primary"  disabled class="col-12 p-2">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                <span class="visually-hidden">Loading...</span>
-                Salvando... aguarde!
-            </button>
-        </mat-card-actions>
-    </mat-card>
+	<mat-card class="example-card">
+		<mat-card-header style="flex-direction: row-reverse">
+			<div class="title">
+				<button
+					(click)="back()"
+					mat-icon-button
+					color="primary"
+					aria-label="add new todo"
+					title="button back to main"
+					data-message="button back to main">
+					<mat-icon>arrow_back</mat-icon>
+				</button>
+				<div class="card-title-text">Add new item</div>
+			</div>
+		</mat-card-header>
+		<mat-card-content>
+			<app-form (filterUpdate)="onFilterUpdate($event)"></app-form>
+		</mat-card-content>
+		<mat-card-actions>
+			<button *ngIf="loading == false" mat-raised-button color="primary" class="col-12 p-2" (click)="submit()" [disabled]="!newTodo.title">
+				Salvar
+			</button>
+			<button *ngIf="loading == true" mat-raised-button color="primary" disabled class="col-12 p-2">
+				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+				<span class="visually-hidden">Loading...</span>
+				Salvando... aguarde!
+			</button>
+		</mat-card-actions>
+	</mat-card>
 </div>
-

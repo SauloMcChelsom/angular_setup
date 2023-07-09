@@ -1,50 +1,40 @@
 <div class="container">
-    <mat-card class="example-card">
-        <mat-card-header style="flex-direction: row-reverse;">
-            <div class="title">
-                <button (click)="back()" mat-icon-button color="primary" aria-label="add new todo" title="button back to main" data-message="button back to main">
-                    <mat-icon>arrow_back</mat-icon>
-                </button>
-                <div class="card-title-text">
-                    Detalhe do item
-                </div>
-            </div>
-        </mat-card-header>
-        <mat-card-content>
-            <app-form-detail (filterUpdate)="onFilterUpdate($event)" [todos]="todos$ | async"></app-form-detail>
-        </mat-card-content>
-        <mat-card-actions>
-            <button
-                *ngIf="loading_delete == false" 
-                mat-raised-button 
-                color="warn" 
-                class="col-12 p-2"
-                (click)="delete()"
-                [disabled]="!newTodo.title"
-            >
-                Excluir
-            </button>
-            <button *ngIf="loading_delete == true" mat-raised-button color="primary"  disabled class="col-12 p-2">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                <span class="visually-hidden">Loading...</span>
-                Excluir... aguarde!
-            </button>
-            <br/>
-            <button
-               *ngIf="loading_update == false" 
-                mat-raised-button 
-                color="primary" 
-                class="col-12 p-2"
-                (click)="update()"
-                [disabled]="!newTodo.title"
-            >
-                Atualizar
-            </button>
-            <button *ngIf="loading_update == true" mat-raised-button color="primary"  disabled class="col-12 p-2">
-                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                <span class="visually-hidden">Loading...</span>
-                Atualizando... aguarde!
-            </button>
-        </mat-card-actions>
-    </mat-card>
+	<mat-card class="example-card">
+		<mat-card-header style="flex-direction: row-reverse">
+			<div class="title">
+				<button
+					(click)="back()"
+					mat-icon-button
+					color="primary"
+					aria-label="add new todo"
+					title="button back to main"
+					data-message="button back to main">
+					<mat-icon>arrow_back</mat-icon>
+				</button>
+				<div class="card-title-text">Detalhe do item</div>
+			</div>
+		</mat-card-header>
+		<mat-card-content>
+			<app-form-detail (filterUpdate)="onFilterUpdate($event)" [todos]="todos$ | async"></app-form-detail>
+		</mat-card-content>
+		<mat-card-actions>
+			<button *ngIf="loading_delete == false" mat-raised-button color="warn" class="col-12 p-2" (click)="delete()" [disabled]="!newTodo.title">
+				Excluir
+			</button>
+			<button *ngIf="loading_delete == true" mat-raised-button color="primary" disabled class="col-12 p-2">
+				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+				<span class="visually-hidden">Loading...</span>
+				Excluir... aguarde!
+			</button>
+			<br />
+			<button *ngIf="loading_update == false" mat-raised-button color="primary" class="col-12 p-2" (click)="update()" [disabled]="!newTodo.title">
+				Atualizar
+			</button>
+			<button *ngIf="loading_update == true" mat-raised-button color="primary" disabled class="col-12 p-2">
+				<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+				<span class="visually-hidden">Loading...</span>
+				Atualizando... aguarde!
+			</button>
+		</mat-card-actions>
+	</mat-card>
 </div>

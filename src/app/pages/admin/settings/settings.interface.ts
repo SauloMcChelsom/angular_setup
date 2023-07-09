@@ -1,4 +1,3 @@
-export  class  Forms {
-  user: string = ''
+export class Forms {
+	user: string = '';
 }
-

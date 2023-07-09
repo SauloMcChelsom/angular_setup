@@ -1,14 +1,14 @@
-<div class='container'>
-        <div *ngFor="let u of user | async">
-            <p>Role: {{ u.getRole() }}</p>
-            <p>Providers: {{ u.getProviders() }}</p>
-            <p>UID: {{ u.getUid() }}</p>
-            <p>Name: {{ u.getName() }}</p>
-            <p>Email: {{ u.getEmail() }}</p> 
-        </div>
+<div class="container">
+	<div *ngFor="let u of user | async">
+		<p>Role: {{ u.getRole() }}</p>
+		<p>Providers: {{ u.getProviders() }}</p>
+		<p>UID: {{ u.getUid() }}</p>
+		<p>Name: {{ u.getName() }}</p>
+		<p>Email: {{ u.getEmail() }}</p>
+	</div>
 
-        <div *ngFor="let u of token | async">
-            access_token: {{ u.access_token | json }}
-            refresh_token: {{ u.refresh_token | json }}
-        </div>
+	<div *ngFor="let u of token | async">
+		access_token: {{ u.access_token | json }} refresh_token:
+		{{ u.refresh_token | json }}
+	</div>
 </div>

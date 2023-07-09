@@ -4,37 +4,37 @@ import { Todo } from '../../models/todo';
 import { TodosStateService } from '../../services/todos-state.service';
 
 @Component({
-  selector: 'app-todo-detail',
-  templateUrl: './todo-detail.component.html',
-  styleUrls: ['./todo-detail.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'app-todo-detail',
+	templateUrl: './todo-detail.component.html',
+	styleUrls: ['./todo-detail.component.css'],
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TodoDetailComponent implements OnInit {
-  @Input()
-  todo: Todo;
+	@Input()
+	todo: Todo;
 
-  constructor(private todosService: TodosStateService) {}
+	constructor(private todosService: TodosStateService) {}
 
-  ngOnInit() {}
+	ngOnInit() {}
 
-  submit(form: NgForm) {
-    const newTodo: Todo = {
-      ...this.todo,
-      ...form.value,
-    };
+	submit(form: NgForm) {
+		const newTodo: Todo = {
+			...this.todo,
+			...form.value,
+		};
 
-    if (newTodo.id) {
-      this.todosService.update(newTodo);
-    } else {
-      this.todosService.create(newTodo);
-    }
-  }
+		if (newTodo.id) {
+			this.todosService.update(newTodo);
+		} else {
+			this.todosService.create(newTodo);
+		}
+	}
 
-  delete() {
-    this.todosService.delete(this.todo);
-  }
+	delete() {
+		this.todosService.delete(this.todo);
+	}
 
-  onClose() {
-    this.todosService.clearSelectedTodo();
-  }
+	onClose() {
+		this.todosService.clearSelectedTodo();
+	}
 }

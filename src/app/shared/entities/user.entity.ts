@@ -1,31 +1,30 @@
 export class UserEntity {
-  private id: number;
-  private uid: String;
-  private email: String;
-  private name: String;
-  private password: String;
-  private providers: String;
-  private last_login: String;
-  private is_active: boolean;
-  private updated_at: String;
-  private timestamp: String;
-  private role: Role;
+	private id: number;
+	private uid: String;
+	private email: String;
+	private name: String;
+	private password: String;
+	private providers: String;
+	private last_login: String;
+	private is_active: boolean;
+	private updated_at: String;
+	private timestamp: String;
+	private role: Role;
 
-  constructor(user:IUser){
-
-	this.id = user.id
-	this.uid = user.uid
-	this.email = user.email
-	this.name = user.name
-	this.password = user.password
-	this.providers = user.providers
-	this.last_login = user.last_login
-	this.is_active = user.is_active
-	this.updated_at = user.updated_at
-	this.timestamp = user.timestamp
-	this.role = user.role
-  }
-  	public getId(): number {
+	constructor(user: IUser) {
+		this.id = user.id;
+		this.uid = user.uid;
+		this.email = user.email;
+		this.name = user.name;
+		this.password = user.password;
+		this.providers = user.providers;
+		this.last_login = user.last_login;
+		this.is_active = user.is_active;
+		this.updated_at = user.updated_at;
+		this.timestamp = user.timestamp;
+		this.role = user.role;
+	}
+	public getId(): number {
 		return this.id;
 	}
 
@@ -81,7 +80,7 @@ export class UserEntity {
 		this.last_login = value;
 	}
 
-  	public getIsActive(): boolean {
+	public getIsActive(): boolean {
 		return this.is_active;
 	}
 
@@ -89,7 +88,7 @@ export class UserEntity {
 		this.is_active = value;
 	}
 
-  	public getUpdatedAt(): String {
+	public getUpdatedAt(): String {
 		return this.updated_at;
 	}
 
@@ -97,7 +96,7 @@ export class UserEntity {
 		this.updated_at = value;
 	}
 
-  	public getTimestamp(): String {
+	public getTimestamp(): String {
 		return this.timestamp;
 	}
 
@@ -105,7 +104,7 @@ export class UserEntity {
 		this.timestamp = value;
 	}
 
-  	public getRole(): Role {
+	public getRole(): Role {
 		return this.role;
 	}
 
@@ -115,24 +114,22 @@ export class UserEntity {
 }
 
 export interface IUser {
-  id: number;
-  uid: String;
-  email: String;
-  name: String;
-  password: String;
-  providers: String;
-  last_login: String;
-  is_active: boolean;
-  updated_at: String;
-  timestamp: String;
-  role: Role;
+	id: number;
+	uid: String;
+	email: String;
+	name: String;
+	password: String;
+	providers: String;
+	last_login: String;
+	is_active: boolean;
+	updated_at: String;
+	timestamp: String;
+	role: Role;
 }
 
-
-
 export enum Role {
-    ADMIN = 'admin',
-    CHIEFEDITOR = 'chiefeditor',    
-    EDITOR = 'editor',
-    USER = 'user'
+	ADMIN = 'admin',
+	CHIEFEDITOR = 'chiefeditor',
+	EDITOR = 'editor',
+	USER = 'user',
 }

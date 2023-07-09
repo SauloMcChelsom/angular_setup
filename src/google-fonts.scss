@@ -1,75 +1,73 @@
-
-
 @mixin google-fonts() {
-    .roboto {
-        font-family: 'Roboto', sans-serif;
-    }
+	.roboto {
+		font-family: 'Roboto', sans-serif;
+	}
 
-    .ubuntu {
-        font-family: 'Ubuntu', sans-serif;
-    }
+	.ubuntu {
+		font-family: 'Ubuntu', sans-serif;
+	}
 
-    .quicksand {
-        font-family: 'Quicksand', sans-serif;
-    }
+	.quicksand {
+		font-family: 'Quicksand', sans-serif;
+	}
 
-    .comfortaa {
-        font-family: 'Comfortaa', cursive;
-    }
+	.comfortaa {
+		font-family: 'Comfortaa', cursive;
+	}
 
-    .baloo-tamma {
-        font-family: 'Baloo Tamma 2', cursive;
-    }
+	.baloo-tamma {
+		font-family: 'Baloo Tamma 2', cursive;
+	}
 
-    .clicker-script {
-        font-family: 'Clicker Script', cursive;
-    }
-    
-    .bangers {
-        font-family: 'Bangers', cursive;
-    }
+	.clicker-script {
+		font-family: 'Clicker Script', cursive;
+	}
 
-    .font20 {
-        font-size: 20px;
-    }
+	.bangers {
+		font-family: 'Bangers', cursive;
+	}
 
-    .font40 {
-        font-size: 40px;
-    }
+	.font20 {
+		font-size: 20px;
+	}
 
-    .fontItalic {
-        font-style: italic;
-    }
+	.font40 {
+		font-size: 40px;
+	}
 
-    .fontOblique {
-        font-style: oblique;
-    }
-    
-    .fontNormal {
-        font-weight:400;
-    }
+	.fontItalic {
+		font-style: italic;
+	}
 
-    .fontLight { 
-        font-weight:300;
-    }
+	.fontOblique {
+		font-style: oblique;
+	}
 
-    .fontMedium {
-        font-weight:500;
-    }
+	.fontNormal {
+		font-weight: 400;
+	}
 
-    .fontBold {
-        font-weight: 700; //bold
-    }
+	.fontLight {
+		font-weight: 300;
+	}
 
-    .fontUppercase {
-        text-transform: uppercase;
-    }
-      
-    .fontLowercase {
-        text-transform: lowercase;
-    }
-      
-    .fontCapitalize {
-        text-transform: capitalize;
-    }
+	.fontMedium {
+		font-weight: 500;
+	}
+
+	.fontBold {
+		font-weight: 700; //bold
+	}
+
+	.fontUppercase {
+		text-transform: uppercase;
+	}
+
+	.fontLowercase {
+		text-transform: lowercase;
+	}
+
+	.fontCapitalize {
+		text-transform: capitalize;
+	}
 }

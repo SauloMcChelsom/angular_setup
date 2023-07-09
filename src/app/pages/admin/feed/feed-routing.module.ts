@@ -6,25 +6,25 @@ import { FeedComponent } from './feed.component';
 import { DetailComponent } from './components/detail/detail.component';
 
 const routes: Routes = [
-  {
-    path: '', 
-    component: FeedComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'create', 
-    component: CreateComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: 'detail', 
-    component: DetailComponent,
-    canActivate: [AuthGuard],
-  }
+	{
+		path: '',
+		component: FeedComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: 'create',
+		component: CreateComponent,
+		canActivate: [AuthGuard],
+	},
+	{
+		path: 'detail',
+		component: DetailComponent,
+		canActivate: [AuthGuard],
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class FeedRoutingModule {}

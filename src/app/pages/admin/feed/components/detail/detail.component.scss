@@ -1,28 +1,28 @@
 .example-card {
-  max-width: 400px;
+	max-width: 400px;
 }
 
 .container {
-    padding: 15px;
-    display: flex;
-    justify-content: center;
+	padding: 15px;
+	display: flex;
+	justify-content: center;
 }
 
 .card-title-text {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
 
-.title{
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+.title {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
-mat-card-actions{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+mat-card-actions {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }

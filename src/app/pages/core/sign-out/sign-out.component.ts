@@ -1,25 +1,23 @@
 import { Component, ViewChild } from '@angular/core';
 import { DialogSignOut } from '@app/shared/components/dialog-sign-out/dialog-sign-out.component';
 
-
 @Component({
-  selector: 'sign-out',
-  templateUrl: './sign-out.component.html',
-  styleUrls: ['./sign-out.component.scss']
+	selector: 'sign-out',
+	templateUrl: './sign-out.component.html',
+	styleUrls: ['./sign-out.component.scss'],
 })
 export class SignOutComponent {
+	@ViewChild(DialogSignOut) signOut: DialogSignOut;
 
-  @ViewChild(DialogSignOut) signOut: DialogSignOut;
+	constructor() {}
 
-  constructor() {}
+	openDialog() {
+		this.signOut.openDialog();
+	}
 
-  openDialog(){
-    this.signOut.openDialog()
-  }
-
-  logoff($event){
-    if($event){
-      window.location.href='/';
-    }
-  }
+	logoff($event) {
+		if ($event) {
+			window.location.href = '/';
+		}
+	}
 }

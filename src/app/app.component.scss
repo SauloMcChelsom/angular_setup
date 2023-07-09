@@ -1,70 +1,71 @@
 mat-sidenav {
-    margin: 0px;
-    width: 240px;
-    border-right: none;
-    border-radius: 0px;
-    padding: 0px;
-    text-align: center;
+	margin: 0px;
+	width: 240px;
+	border-right: none;
+	border-radius: 0px;
+	padding: 0px;
+	text-align: center;
 }
 
 .disabled-icon {
-    color: #0095f6;
+	color: #0095f6;
 }
 
 .menu-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 1rem;
-    border-radius: 0px;
-    margin-top: 15px;
-    mat-icon {
-        margin-right: 8px;
-    }
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	font-size: 1rem;
+	border-radius: 0px;
+	margin-top: 15px;
+	mat-icon {
+		margin-right: 8px;
+	}
 }
 
 .button-menu {
-    padding: 10px 16px
+	padding: 10px 16px;
 }
 
-.header-flex{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: nowrap;
+.header-flex {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: nowrap;
 }
 
 mat-divider {
-    margin-top: 16px;
-    margin-bottom: 16px;
-    background-color: rgba(255, 255, 255, 0.5);
+	margin-top: 16px;
+	margin-bottom: 16px;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .example-container {
-    position: absolute;
-    top: 60px;
-    bottom: 0px;
-    left: 0;
-    right: 0;
-}
-  
-.example-header {
-    position: sticky;
-    position: -webkit-sticky; /* For macOS/iOS Safari */
-    top: 0; /* Sets the sticky toolbar to be on top */
-    z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
-}
-  
-.example-footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+	position: absolute;
+	top: 60px;
+	bottom: 0px;
+	left: 0;
+	right: 0;
 }
 
-//importante no mobile 
-@media (max-width: 599px){
-    .mat-toolbar-row, .mat-toolbar-single-row {
-        height : 64px!important;
-    }
+.example-header {
+	position: sticky;
+	position: -webkit-sticky; /* For macOS/iOS Safari */
+	top: 0; /* Sets the sticky toolbar to be on top */
+	z-index: 1000; /* Ensure that your app's content doesn't overlap the toolbar */
+}
+
+.example-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+
+//importante no mobile
+@media (max-width: 599px) {
+	.mat-toolbar-row,
+	.mat-toolbar-single-row {
+		height: 64px !important;
+	}
 }

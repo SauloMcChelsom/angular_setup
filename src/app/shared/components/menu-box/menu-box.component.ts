@@ -1,10 +1,10 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 @Component({
-  selector: 'menu-box',
-  templateUrl: './menu-box.component.html'
+	selector: 'menu-box',
+	templateUrl: './menu-box.component.html',
 })
 export class MenuBoxComponent {
-  @Input() titulo: string = '';
+	@Input() titulo: string = '';
 
-  constructor() {}
+	constructor() {}
 }

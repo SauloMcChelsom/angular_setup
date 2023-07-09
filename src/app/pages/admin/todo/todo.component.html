@@ -1,60 +1,36 @@
- 
- <div class='container'>
-
-
-
-
-
-
- 
-
-<ng-container *ngIf="users$ | async as users; else notLoaded">
-  <ng-container *ngIf="users && users.length > 0; else notLoaded">
-    <!--<p-dropdown
-      [options]="users"
-      [ngModel]="selectedUser$ | async"
-      (ngModelChange)="selectUser($event)"
-    >
-      <ng-template pTemplate="selectedItem" let-item>
-        {{ item.email }}
-      </ng-template>
-      <ng-template pTemplate="item" let-option>
-        {{ option.email }}
-      </ng-template>
-    </p-dropdown>-->
-    <mat-form-field 
-      appearance="fill"
-      hideRequiredMarker="true"
-      floatLabel="auto" 
-    >
-
-      <mat-select required > 
-          <mat-option>-- None --</mat-option>
-          <mat-option *ngFor="let food of users" [value]="food.id"  (click)="selectUser(food)">
-            {{food.email}}
-          </mat-option>
-      </mat-select>
-      <mat-label><b>Filter</b></mat-label>
-    </mat-form-field>
-    <div>
-      <ng-container
-        *ngIf="selectedUser$ | async as selectedUser; else noSelection"
-      >
-        <pre>{{ selectedUser | json }}</pre>
-      </ng-container>
-    </div>
-
-    <ng-template #noSelection>
-      <i class="pi pi-info-circle"></i>
-      No user selected
-    </ng-template>
-  </ng-container>
-</ng-container>
-
-<button (click)="select()">select Users</button>
-
-<ng-template #notLoaded>
-  <button (click)="load()">Load Users</button>
-</ng-template>
-
- </div>
+<div class="container">
+	<ng-container *ngIf="users$ | async as users; else notLoaded">
+		<ng-container *ngIf="users && users.length > 0; else notLoaded">
+			<!--<p-dropdown [options]="users" [ngModel]="selectedUser$ | async" (ngModelChange)="selectUser($event)">
+				<ng-template pTemplate="selectedItem" let-item>
+					{{ item.email }}
+				</ng-template>
+				<ng-template pTemplate="item" let-option>
+					{{ option.email }}
+				</ng-template>
+			</p-dropdown>-->
+			<mat-form-field appearance="fill" hideRequiredMarker="true" floatLabel="auto">
+				<mat-select required>
+					<mat-option>-- None --</mat-option>
+					<mat-option *ngFor="let food of users" [value]="food.id" (click)="selectUser(food)">
+						{{ food.email }}
+					</mat-option>
+				</mat-select>
+				<mat-label><b>Filter</b></mat-label>
+			</mat-form-field>
+			<div>
+				<ng-container *ngIf="selectedUser$ | async as selectedUser; else noSelection">
+					<pre>{{ selectedUser | json }}</pre>
+				</ng-container>
+			</div>
+			<ng-template #noSelection>
+				<i class="pi pi-info-circle"></i>
+				No user selected
+			</ng-template>
+		</ng-container>
+	</ng-container>
+	<button (click)="select()">select Users</button>
+	<ng-template #notLoaded>
+		<button (click)="load()">Load Users</button>
+	</ng-template>
+</div>
